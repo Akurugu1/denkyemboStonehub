@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Denkyembo — Orders &amp; Customers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --onyx:#15130F;
+    --onyx-panel:#1D1A14;
+    --onyx-panel-2:#242019;
+    --onyx-border:#332D22;
+    --marble:#F3EFE6;
+    --marble-panel:#FFFFFF;
+    --marble-panel-2:#FAF7F0;
+    --marble-border:#E3DBC9;
+    --brass:#B08D57;
+    --brass-deep:#8C6B3F;
+    --brass-light:#D9BC8B;
+    --charcoal:#2B2620;
+    --ink-soft:#6E6656;
+    --rust:#A6572E;
+    --sage:#5E7A52;
+    --slate:#4F6B85;
+    --mustard:#B5893A;
+    --radius:10px;
+    --shadow:0 8px 24px rgba(21,19,15,0.08);
+    --shadow-lg:0 16px 40px rgba(21,19,15,0.16);
+    color-scheme: light;
+  }
+  [data-theme="dark"]{
+    color-scheme: dark;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--marble);
+    color:var(--charcoal);
+    transition:background .25s ease, color .25s ease;
+    min-height:100vh;
+  }
+  [data-theme="dark"] body{background:var(--onyx); color:#EFE8D8;}
+
+  ::selection{background:var(--brass-light); color:var(--charcoal);}
+
+  a{color:inherit;}
+  button{font-family:inherit;}
+  .mono{font-family:'IBM Plex Mono',monospace; letter-spacing:.02em;}
+
+  /* ===== Layout shell ===== */
+  .shell{display:flex; min-height:100vh;}
+
+  /* ===== Sidebar ===== */
+  .sidebar{
+    width:236px; flex-shrink:0;
+    background:var(--onyx);
+    color:#EFE8D8;
+    display:flex; flex-direction:column;
+    padding:26px 18px;
+    position:sticky; top:0; height:100vh;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    padding:0 6px 24px 6px;
+    border-bottom:1px solid rgba(217,188,139,0.16);
+    margin-bottom:22px;
+  }
+  .brand-mark{
+    width:34px;height:34px;border-radius:8px;
+    background:linear-gradient(135deg, var(--brass-light), var(--brass-deep));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#1D1A14;
+    flex-shrink:0;
+  }
+  .brand-text{line-height:1.15;}
+  .brand-text .top{font-family:'Fraunces',serif; font-size:15.5px; font-weight:600; color:#F3EFE6;}
+  .brand-text .sub{font-size:10.5px; color:var(--brass-light); text-transform:uppercase; letter-spacing:.09em;}
+
+  .nav-group-label{
+    font-size:10.5px; text-transform:uppercase; letter-spacing:.1em;
+    color:#7A7362; padding:14px 10px 8px;
+  }
+  .nav{list-style:none; margin:0; padding:0;}
+  .nav li{margin-bottom:2px;}
+  .nav button{
+    width:100%; display:flex; align-items:center; gap:11px;
+    background:transparent; border:none; cursor:pointer;
+    padding:10px 12px; border-radius:8px;
+    color:#C7BFA9; font-size:13.5px; font-weight:500;
+    text-align:left; transition:background .15s, color .15s;
+  }
+  .nav button svg{width:16px;height:16px; flex-shrink:0; opacity:.85;}
+  .nav button:hover{background:rgba(217,188,139,0.08); color:#F3EFE6;}
+  .nav button.active{
+    background:rgba(217,188,139,0.14);
+    color:#F3EFE6;
+    box-shadow:inset 2px 0 0 var(--brass-light);
+  }
+  .sidebar-foot{
+    margin-top:auto; padding-top:16px; border-top:1px solid rgba(217,188,139,0.14);
+    font-size:11.5px; color:#7A7362;
+  }
+
+  /* ===== Main ===== */
+  .main{flex:1; min-width:0; display:flex; flex-direction:column;}
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 30px; gap:20px;
+    background:var(--marble-panel);
+    border-bottom:1px solid var(--marble-border);
+    position:sticky; top:0; z-index:20;
+  }
+  [data-theme="dark"] .topbar{background:var(--onyx-panel); border-color:var(--onyx-border);}
+
+  .page-title{font-family:'Fraunces',serif; font-size:21px; font-weight:600;}
+  .page-sub{font-size:12.5px; color:var(--ink-soft); margin-top:2px;}
+
+  .search-wrap{
+    flex:1; max-width:380px; position:relative;
+  }
+  .search-wrap input{
+    width:100%; padding:9px 14px 9px 34px;
+    border-radius:8px; border:1px solid var(--marble-border);
+    background:var(--marble-panel-2); font-size:13px; color:var(--charcoal);
+    outline:none; transition:border-color .15s;
+  }
+  [data-theme="dark"] .search-wrap input{background:var(--onyx-panel-2); border-color:var(--onyx-border); color:#EFE8D8;}
+  .search-wrap input:focus{border-color:var(--brass);}
+  .search-wrap svg{position:absolute; left:11px; top:50%; transform:translateY(-50%); width:14px; height:14px; opacity:.5;}
+
+  .topbar-actions{display:flex; align-items:center; gap:12px;}
+  .icon-btn{
+    width:38px;height:38px; border-radius:9px; border:1px solid var(--marble-border);
+    background:var(--marble-panel-2); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; transition:background .15s;
+  }
+  [data-theme="dark"] .icon-btn{background:var(--onyx-panel-2); border-color:var(--onyx-border);}
+  .icon-btn:hover{background:var(--marble-border);}
+  [data-theme="dark"] .icon-btn:hover{background:var(--onyx-border);}
+  .icon-btn svg{width:16px;height:16px;}
+
+  .avatar{
+    width:38px;height:38px;border-radius:50%;
+    background:linear-gradient(135deg, var(--brass-light), var(--brass-deep));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-weight:600; font-size:14px; color:#1D1A14;
+    cursor:pointer; flex-shrink:0;
+  }
+
+  .profile-menu{position:relative;}
+  .dropdown{
+    position:absolute; top:calc(100% + 10px); right:0; width:210px;
+    background:var(--marble-panel); border:1px solid var(--marble-border);
+    border-radius:10px; box-shadow:var(--shadow-lg);
+    padding:6px; z-index:70;
+    opacity:0; transform:translateY(-6px) scale(.98); pointer-events:none;
+    transition:opacity .16s ease, transform .16s ease;
+  }
+  [data-theme="dark"] .dropdown{background:var(--onyx-panel); border-color:var(--onyx-border);}
+  .dropdown.open{opacity:1; transform:translateY(0) scale(1); pointer-events:auto;}
+  .dropdown-label{padding:9px 12px 7px; font-size:11px; text-transform:uppercase; letter-spacing:.07em; color:var(--ink-soft); border-bottom:1px solid var(--marble-border); margin-bottom:4px;}
+  [data-theme="dark"] .dropdown-label{border-color:var(--onyx-border);}
+  .dropdown-item{
+    display:flex; align-items:center; gap:9px; width:100%;
+    padding:9px 10px; border-radius:7px; border:none; background:transparent;
+    font-size:13px; font-weight:500; color:var(--charcoal); cursor:pointer; text-align:left;
+    text-decoration:none;
+  }
+  [data-theme="dark"] .dropdown-item{color:#EFE8D8;}
+  .dropdown-item:hover{background:var(--marble-panel-2);}
+  [data-theme="dark"] .dropdown-item:hover{background:var(--onyx-panel-2);}
+  .dropdown-item svg{width:15px;height:15px; opacity:.7; flex-shrink:0;}
+
+  .content{padding:26px 30px 60px; max-width:1400px; width:100%; margin:0 auto;}
+
+  /* ===== Stat cards ===== */
+  .stats-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:26px;
+  }
+  .stat-card{
+    background:var(--marble-panel); border:1px solid var(--marble-border);
+    border-radius:var(--radius); padding:18px 20px;
+    box-shadow:var(--shadow);
+  }
+  [data-theme="dark"] .stat-card{background:var(--onyx-panel); border-color:var(--onyx-border); box-shadow:none;}
+  .stat-label{font-size:11.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft);}
+  .stat-value{font-family:'Fraunces',serif; font-size:27px; font-weight:600; margin-top:6px;}
+  .stat-delta{font-size:11.5px; margin-top:6px; display:flex; align-items:center; gap:4px;}
+  .stat-delta.up{color:var(--sage);}
+  .stat-delta.down{color:var(--rust);}
+
+  /* ===== Panels ===== */
+  .panel{
+    background:var(--marble-panel); border:1px solid var(--marble-border);
+    border-radius:var(--radius); box-shadow:var(--shadow);
+    margin-bottom:22px; overflow:hidden;
+  }
+  [data-theme="dark"] .panel{background:var(--onyx-panel); border-color:var(--onyx-border); box-shadow:none;}
+  .panel-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 20px; border-bottom:1px solid var(--marble-border);
+  }
+  [data-theme="dark"] .panel-head{border-color:var(--onyx-border);}
+  .panel-head h2{font-family:'Fraunces',serif; font-size:16.5px; font-weight:600; margin:0;}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:7px;
+    padding:9px 15px; border-radius:8px; border:none; cursor:pointer;
+    font-size:13px; font-weight:600; transition:filter .15s, transform .1s;
+  }
+  .btn:active{transform:scale(.98);}
+  .btn-primary{background:var(--brass); color:#1D1A14;}
+  .btn-primary:hover{filter:brightness(1.06);}
+  .btn-ghost{background:transparent; border:1px solid var(--marble-border); color:var(--charcoal);}
+  [data-theme="dark"] .btn-ghost{border-color:var(--onyx-border); color:#EFE8D8;}
+  .btn-ghost:hover{background:var(--marble-panel-2);}
+  [data-theme="dark"] .btn-ghost:hover{background:var(--onyx-panel-2);}
+  .btn svg{width:14px;height:14px;}
+
+  .filters{display:flex; gap:8px; padding:14px 20px 0;}
+  .chip{
+    padding:6px 13px; border-radius:20px; border:1px solid var(--marble-border);
+    font-size:12px; font-weight:600; cursor:pointer; background:transparent; color:var(--ink-soft);
+    transition:all .15s;
+  }
+  [data-theme="dark"] .chip{border-color:var(--onyx-border);}
+  .chip.active{background:var(--charcoal); color:#F3EFE6; border-color:var(--charcoal);}
+  [data-theme="dark"] .chip.active{background:var(--brass); color:#1D1A14; border-color:var(--brass);}
+
+  /* ===== Table ===== */
+  table{width:100%; border-collapse:collapse;}
+  thead th{
+    text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.07em;
+    color:var(--ink-soft); font-weight:600; padding:12px 20px; border-bottom:1px solid var(--marble-border);
+  }
+  [data-theme="dark"] thead th{border-color:var(--onyx-border);}
+  tbody td{padding:14px 20px; font-size:13.5px; border-bottom:1px solid var(--marble-border); vertical-align:middle;}
+  [data-theme="dark"] tbody td{border-color:var(--onyx-border);}
+  tbody tr{cursor:pointer; transition:background .12s;}
+  tbody tr:hover{background:var(--marble-panel-2);}
+  [data-theme="dark"] tbody tr:hover{background:var(--onyx-panel-2);}
+  tbody tr:last-child td{border-bottom:none;}
+
+  .cust-cell{display:flex; align-items:center; gap:10px;}
+  .cust-avatar{
+    width:32px;height:32px;border-radius:50%; flex-shrink:0;
+    background:var(--marble-panel-2); border:1px solid var(--marble-border);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-size:12px; font-weight:600; color:var(--brass-deep);
+  }
+  [data-theme="dark"] .cust-avatar{background:var(--onyx-panel-2); border-color:var(--onyx-border); color:var(--brass-light);}
+  .cust-name{font-weight:600; font-size:13.5px;}
+  .cust-meta{font-size:11.5px; color:var(--ink-soft);}
+
+  .badge{
+    display:inline-flex; align-items:center; gap:5px;
+    padding:4px 10px; border-radius:20px; font-size:11px; font-weight:600;
+  }
+  .badge::before{content:''; width:6px;height:6px;border-radius:50%; background:currentColor;}
+  .badge.pending{background:rgba(181,137,58,0.14); color:var(--mustard);}
+  .badge.confirmed{background:rgba(176,141,87,0.14); color:var(--brass-deep);}
+  [data-theme="dark"] .badge.confirmed{color:var(--brass-light);}
+  .badge.production{background:rgba(79,107,133,0.14); color:var(--slate);}
+  .badge.ready{background:rgba(94,122,82,0.14); color:var(--sage);}
+  .badge.delivered{background:rgba(94,122,82,0.18); color:var(--sage);}
+  .badge.cancelled{background:rgba(166,87,46,0.14); color:var(--rust);}
+
+  .material-swatch{display:inline-flex; align-items:center; gap:7px; font-size:12.5px;}
+  .swatch-dot{width:14px;height:14px;border-radius:4px; flex-shrink:0; border:1px solid rgba(0,0,0,.08);}
+  .swatch-marble{background:linear-gradient(135deg,#F4F1E9,#DCD4C0);}
+  .swatch-granite{background:linear-gradient(135deg,#3B3B3D,#67666B);}
+  .swatch-quartz{background:linear-gradient(135deg,#EDEAF2,#C9C3D6);}
+
+  .table-foot{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 20px; font-size:12px; color:var(--ink-soft);
+  }
+
+  .empty-state{padding:50px 20px; text-align:center; color:var(--ink-soft);}
+  .empty-state svg{width:40px;height:40px; opacity:.35; margin-bottom:10px;}
+  .empty-state p{font-size:13px; margin:0;}
+
+  /* ===== Order detail drawer ===== */
+  .drawer-overlay{
+    position:fixed; inset:0; background:rgba(21,19,15,0.42);
+    opacity:0; pointer-events:none; transition:opacity .2s ease; z-index:50;
+  }
+  .drawer-overlay.open{opacity:1; pointer-events:auto;}
+  .drawer{
+    position:fixed; top:0; right:0; height:100vh; width:440px; max-width:92vw;
+    background:var(--marble-panel);
+    box-shadow:var(--shadow-lg);
+    transform:translateX(100%); transition:transform .28s cubic-bezier(.4,0,.2,1);
+    z-index:51; overflow-y:auto;
+  }
+  [data-theme="dark"] .drawer{background:var(--onyx-panel);}
+  .drawer.open{transform:translateX(0);}
+  .drawer-head{
+    padding:22px 24px; border-bottom:1px solid var(--marble-border);
+    display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+  }
+  [data-theme="dark"] .drawer-head{border-color:var(--onyx-border);}
+  .drawer-head h3{font-family:'Fraunces',serif; font-size:19px; margin:0 0 4px;}
+  .drawer-close{background:transparent; border:none; cursor:pointer; padding:6px; opacity:.6;}
+  .drawer-close:hover{opacity:1;}
+  .drawer-body{padding:22px 24px;}
+  .drawer-section{margin-bottom:26px;}
+  .drawer-section h4{
+    font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft);
+    margin:0 0 12px; font-weight:600;
+  }
+  .kv-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px 16px;}
+  .kv-item .k{font-size:11px; color:var(--ink-soft); margin-bottom:3px;}
+  .kv-item .v{font-size:13.5px; font-weight:600;}
+
+  /* Signature: fabrication timeline (real sequence for stone orders) */
+  .timeline{position:relative; padding-left:6px;}
+  .timeline-track{
+    position:absolute; left:15px; top:6px; bottom:6px; width:2px;
+    background:repeating-linear-gradient(180deg, var(--marble-border) 0 4px, transparent 4px 8px);
+  }
+  [data-theme="dark"] .timeline-track{background:repeating-linear-gradient(180deg, var(--onyx-border) 0 4px, transparent 4px 8px);}
+  .timeline-step{position:relative; display:flex; gap:14px; padding-bottom:22px;}
+  .timeline-step:last-child{padding-bottom:0;}
+  .timeline-node{
+    width:32px;height:32px;border-radius:50%; flex-shrink:0; z-index:1;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--marble-panel-2); border:2px solid var(--marble-border);
+    transition:all .2s;
+  }
+  [data-theme="dark"] .timeline-node{background:var(--onyx-panel-2); border-color:var(--onyx-border);}
+  .timeline-step.done .timeline-node{background:var(--brass); border-color:var(--brass); color:#1D1A14;}
+  .timeline-step.current .timeline-node{border-color:var(--brass); box-shadow:0 0 0 4px rgba(176,141,87,0.18);}
+  .timeline-node svg{width:14px;height:14px;}
+  .timeline-content .t-title{font-size:13.5px; font-weight:600;}
+  .timeline-content .t-sub{font-size:11.5px; color:var(--ink-soft); margin-top:2px;}
+  .timeline-step.pending .timeline-content{opacity:.5;}
+
+  /* ===== Modal ===== */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(21,19,15,0.42);
+    display:none; align-items:center; justify-content:center; z-index:60; padding:20px;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal{
+    background:var(--marble-panel); border-radius:14px; width:460px; max-width:100%;
+    box-shadow:var(--shadow-lg); max-height:88vh; overflow-y:auto;
+  }
+  [data-theme="dark"] .modal{background:var(--onyx-panel);}
+  .modal-head{padding:20px 24px; border-bottom:1px solid var(--marble-border); display:flex; justify-content:space-between; align-items:center;}
+  [data-theme="dark"] .modal-head{border-color:var(--onyx-border);}
+  .modal-head h3{font-family:'Fraunces',serif; font-size:17px; margin:0;}
+  .modal-body{padding:22px 24px;}
+  .field{margin-bottom:15px;}
+  .field label{display:block; font-size:12px; font-weight:600; margin-bottom:6px; color:var(--ink-soft);}
+  .field input, .field select, .field textarea{
+    width:100%; padding:9px 12px; border-radius:8px; border:1px solid var(--marble-border);
+    background:var(--marble-panel-2); font-size:13.5px; color:var(--charcoal); font-family:inherit; outline:none;
+  }
+  [data-theme="dark"] .field input, [data-theme="dark"] .field select, [data-theme="dark"] .field textarea{
+    background:var(--onyx-panel-2); border-color:var(--onyx-border); color:#EFE8D8;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{border-color:var(--brass);}
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  .modal-foot{padding:16px 24px; border-top:1px solid var(--marble-border); display:flex; justify-content:flex-end; gap:10px;}
+  [data-theme="dark"] .modal-foot{border-color:var(--onyx-border);}
+
+  .toast{
+    position:fixed; bottom:24px; right:24px; z-index:80;
+    background:var(--charcoal); color:#F3EFE6; padding:12px 18px; border-radius:8px;
+    font-size:13px; font-weight:500; box-shadow:var(--shadow-lg);
+    display:flex; align-items:center; gap:8px;
+    transform:translateY(20px); opacity:0; pointer-events:none; transition:all .25s ease;
+  }
+  .toast.show{transform:translateY(0); opacity:1;}
+  .toast svg{width:15px;height:15px; color:var(--brass-light);}
+
+  .view{display:none;}
+  .view.active{display:block;}
+
+  @media (max-width: 980px){
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+    .sidebar{position:fixed; left:0; z-index:40; transform:translateX(-100%); transition:transform .25s;}
+    .sidebar.open{transform:translateX(0);}
+    .search-wrap{max-width:220px;}
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark">D</div>
+      <div class="brand-text">
+        <div class="top">Denkyembo</div>
+        <div class="sub">Orders Console</div>
+      </div>
+    </div>
+
+    <div class="nav-group-label">Overview</div>
+    <ul class="nav">
+      <li><button class="nav-btn active" data-view="overview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+        Dashboard
+      </button></li>
+    </ul>
+
+    <div class="nav-group-label">Manage</div>
+    <ul class="nav">
+      <li><button class="nav-btn" data-view="orders">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4"/><path d="M9 3v6h6"/><path d="M21 3l-8 8"/></svg>
+        Orders
+      </button></li>
+      <li><button class="nav-btn" data-view="customers">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.6 2.9-6.3 6.5-6.3s6.5 2.7 6.5 6.3"/><circle cx="17.5" cy="8.5" r="2.6"/><path d="M15.5 13.9c2.9.3 5 2.7 5 6.1"/></svg>
+        Customers
+      </button></li>
+    </ul>
+
+    <div class="sidebar-foot">Team Gusto · StoneHub<br>Signed in as Admin</div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div>
+        <div class="page-title" id="pageTitle">Dashboard</div>
+        <div class="page-sub" id="pageSub">Customer &amp; order activity at a glance</div>
+      </div>
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" id="searchInput" placeholder="Search orders or customers…">
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" id="themeToggle" title="Toggle dark mode">
+          <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <div class="profile-menu" id="profileMenu">
+          <div class="avatar" id="avatarBtn">TG</div>
+          <div class="dropdown" id="profileDropdown">
+            <div class="dropdown-label">Team Gusto</div>
+            <a class="dropdown-item" href="landing.html" id="returnMainBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9"/><path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"/></svg>
+              Return to main page
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- OVERVIEW -->
+      <div class="view active" id="view-overview">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Active Orders</div>
+            <div class="stat-value" id="statActive">—</div>
+            <div class="stat-delta up">In progress across all stages</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Revenue (GHS)</div>
+            <div class="stat-value" id="statRevenue">—</div>
+            <div class="stat-delta up">From confirmed &amp; delivered orders</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Total Customers</div>
+            <div class="stat-value" id="statCustomers">—</div>
+            <div class="stat-delta up">Registered accounts</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Pending Deliveries</div>
+            <div class="stat-value" id="statPending">—</div>
+            <div class="stat-delta down">Awaiting dispatch</div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Recent orders</h2>
+            <button class="btn btn-ghost" data-goto="orders">View all</button>
+          </div>
+          <div id="recentOrdersTable"></div>
+        </div>
+      </div>
+
+      <!-- ORDERS -->
+      <div class="view" id="view-orders">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>All orders</h2>
+            <button class="btn btn-primary" id="newOrderBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>
+              New order
+            </button>
+          </div>
+          <div class="filters" id="orderFilters"></div>
+          <div id="ordersTable"></div>
+        </div>
+      </div>
+
+      <!-- CUSTOMERS -->
+      <div class="view" id="view-customers">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Customers</h2>
+            <button class="btn btn-primary" id="newCustomerBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>
+              New customer
+            </button>
+          </div>
+          <div id="customersTable"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Order Drawer -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="drawer" id="orderDrawer"></div>
+
+<!-- New Order Modal -->
+<div class="modal-overlay" id="orderModalOverlay">
+  <div class="modal">
+    <div class="modal-head"><h3>New order</h3><button class="drawer-close" id="closeOrderModal">✕</button></div>
+    <div class="modal-body">
+      <div class="field">
+        <label>Customer</label>
+        <select id="ordCustomer"></select>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Material</label>
+          <select id="ordMaterial">
+            <option value="marble">Marble</option>
+            <option value="granite">Granite</option>
+            <option value="quartz">Quartz</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Area (sq ft)</label>
+          <input type="number" id="ordArea" min="1" value="40">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Amount (GHS)</label>
+          <input type="number" id="ordAmount" min="0" value="4800">
+        </div>
+        <div class="field">
+          <label>Status</label>
+          <select id="ordStatus">
+            <option value="pending">Pending</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="production">In production</option>
+            <option value="ready">Ready for delivery</option>
+            <option value="delivered">Delivered</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Delivery notes</label>
+        <textarea id="ordNotes" rows="3" placeholder="Site address, contact on delivery, access notes…"></textarea>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" id="cancelOrderModal">Cancel</button>
+      <button class="btn btn-primary" id="saveOrderBtn">Save order</button>
+    </div>
+  </div>
+</div>
+
+<!-- New Customer Modal -->
+<div class="modal-overlay" id="customerModalOverlay">
+  <div class="modal">
+    <div class="modal-head"><h3>New customer</h3><button class="drawer-close" id="closeCustomerModal">✕</button></div>
+    <div class="modal-body">
+      <div class="field">
+        <label>Full name</label>
+        <input type="text" id="custName" placeholder="e.g. Ama Boateng">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Phone</label>
+          <input type="text" id="custPhone" placeholder="0244 000 000">
+        </div>
+        <div class="field">
+          <label>Type</label>
+          <select id="custType">
+            <option value="Retail">Retail</option>
+            <option value="Contractor">Contractor</option>
+            <option value="Business">Business</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Location</label>
+        <input type="text" id="custLocation" placeholder="e.g. East Legon, Accra">
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" id="cancelCustomerModal">Cancel</button>
+      <button class="btn btn-primary" id="saveCustomerBtn">Save customer</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===================== Data layer ===================== */
+const STORAGE_KEY = 'denkyembo_orders_console_v1';
+
+const STAGES = [
+  {key:'pending',    label:'Order placed',        icon:'circle'},
+  {key:'confirmed',  label:'Confirmed & scheduled',icon:'check'},
+  {key:'production',  label:'Cutting & fabrication',icon:'tool'},
+  {key:'ready',       label:'Polished — ready',     icon:'sparkle'},
+  {key:'delivered',   label:'Delivered on site',    icon:'truck'},
+];
+const STAGE_INDEX = Object.fromEntries(STAGES.map((s,i)=>[s.key,i]));
+
+function seedData(){
+  const customers = [
+    {id:'C-1001', name:'Ama Boateng', phone:'024 411 2290', type:'Retail', location:'East Legon, Accra', joined:'2026-03-12'},
+    {id:'C-1002', name:'Kojo Mensah Construction', phone:'020 771 5543', type:'Contractor', location:'Tema Community 25', joined:'2026-04-02'},
+    {id:'C-1003', name:'Naa Adjeley', phone:'055 902 8871', type:'Retail', location:'Spintex, Accra', joined:'2026-04-19'},
+    {id:'C-1004', name:'Everstone Interiors Ltd', phone:'030 266 1187', type:'Business', location:'Airport Residential, Accra', joined:'2026-05-06'},
+    {id:'C-1005', name:'Yaw Owusu', phone:'024 803 4471', type:'Retail', location:'Kumasi, Ashanti', joined:'2026-05-28'},
+    {id:'C-1006', name:'Golden Crest Hotels', phone:'020 118 6634', type:'Business', location:'Labadi, Accra', joined:'2026-06-14'},
+  ];
+  const orders = [
+    {id:'ORD-8841', customerId:'C-1002', material:'granite', area:210, amount:31500, status:'production', notes:'Deliver to site office, ask for foreman Kwabena.', created:'2026-07-14'},
+    {id:'ORD-8842', customerId:'C-1001', material:'marble',  area:38,  amount:9880,  status:'ready',      notes:'Residential kitchen countertop. Call before arrival.', created:'2026-07-18'},
+    {id:'ORD-8843', customerId:'C-1004', material:'quartz',  area:95,  amount:22800, status:'confirmed',  notes:'Lobby reception counter, install team required.', created:'2026-07-21'},
+    {id:'ORD-8844', customerId:'C-1003', material:'granite', area:26,  amount:5460,  status:'delivered',  notes:'Bathroom vanity top, delivered and signed off.', created:'2026-07-05'},
+    {id:'ORD-8845', customerId:'C-1006', material:'marble',  area:340, amount:88400, status:'pending',    notes:'Hotel lobby flooring — awaiting deposit confirmation.', created:'2026-07-29'},
+    {id:'ORD-8846', customerId:'C-1005', material:'granite', area:52,  amount:10920, status:'confirmed',  notes:'Kitchen island slab, custom edge finish.', created:'2026-07-24'},
+    {id:'ORD-8847', customerId:'C-1002', material:'quartz',  area:64,  amount:15360, status:'delivered',  notes:'Second phase of site fit-out, completed.', created:'2026-06-30'},
+  ];
+  return {customers, orders};
+}
+
+function loadData(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  const seeded = seedData();
+  saveData(seeded);
+  return seeded;
+}
+function saveData(data){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }catch(e){}
+}
+
+let DATA = loadData();
+let activeOrderFilter = 'all';
+let searchTerm = '';
+
+/* ===================== Theme ===================== */
+function initTheme(){
+  const saved = localStorage.getItem('denkyembo_theme') || 'light';
+  document.documentElement.setAttribute('data-theme', saved);
+  updateThemeIcon(saved);
+}
+function toggleTheme(){
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('denkyembo_theme', next);
+  updateThemeIcon(next);
+}
+function updateThemeIcon(mode){
+  const icon = document.getElementById('themeIcon');
+  icon.innerHTML = mode === 'dark'
+    ? '<circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/>'
+    : '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>';
+}
+
+/* ===================== Helpers ===================== */
+function fmtGHS(n){ return 'GHS ' + Number(n).toLocaleString('en-GH', {minimumFractionDigits:0}); }
+function fmtDate(d){ return new Date(d).toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'}); }
+function initials(name){ return name.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase(); }
+function customerById(id){ return DATA.customers.find(c=>c.id===id); }
+function statusLabel(s){ return {pending:'Pending', confirmed:'Confirmed', production:'In production', ready:'Ready', delivered:'Delivered', cancelled:'Cancelled'}[s] || s; }
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>' + msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(()=>t.classList.remove('show'), 2400);
+}
+
+/* ===================== Rendering: Stats ===================== */
+function renderStats(){
+  const active = DATA.orders.filter(o=>['pending','confirmed','production','ready'].includes(o.status)).length;
+  const revenue = DATA.orders.filter(o=>['confirmed','production','ready','delivered'].includes(o.status)).reduce((s,o)=>s+o.amount,0);
+  const pending = DATA.orders.filter(o=>o.status==='ready').length;
+  document.getElementById('statActive').textContent = active;
+  document.getElementById('statRevenue').textContent = fmtGHS(revenue);
+  document.getElementById('statCustomers').textContent = DATA.customers.length;
+  document.getElementById('statPending').textContent = pending;
+}
+
+/* ===================== Rendering: Orders table ===================== */
+function orderRowHtml(o){
+  const c = customerById(o.customerId) || {name:'Unknown', location:''};
+  const swatchClass = {marble:'swatch-marble', granite:'swatch-granite', quartz:'swatch-quartz'}[o.material];
+  return `<tr data-order="${o.id}">
+    <td class="mono">${o.id}</td>
+    <td>
+      <div class="cust-cell">
+        <div class="cust-avatar">${initials(c.name)}</div>
+        <div><div class="cust-name">${c.name}</div><div class="cust-meta">${c.location||''}</div></div>
+      </div>
+    </td>
+    <td><span class="material-swatch"><span class="swatch-dot ${swatchClass}"></span>${o.material[0].toUpperCase()+o.material.slice(1)} · ${o.area} sq ft</span></td>
+    <td class="mono">${fmtGHS(o.amount)}</td>
+    <td><span class="badge ${o.status}">${statusLabel(o.status)}</span></td>
+    <td>${fmtDate(o.created)}</td>
+  </tr>`;
+}
+
+function filteredOrders(){
+  let list = [...DATA.orders].sort((a,b)=> new Date(b.created)-new Date(a.created));
+  if(activeOrderFilter !== 'all') list = list.filter(o=>o.status===activeOrderFilter);
+  if(searchTerm){
+    const q = searchTerm.toLowerCase();
+    list = list.filter(o=>{
+      const c = customerById(o.customerId);
+      return o.id.toLowerCase().includes(q) || (c && c.name.toLowerCase().includes(q));
+    });
+  }
+  return list;
+}
+
+function renderOrdersTable(targetId, list){
+  const el = document.getElementById(targetId);
+  if(list.length === 0){
+    el.innerHTML = `<div class="empty-state">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4"/><path d="M9 3v6h6"/><path d="M21 3l-8 8"/></svg>
+      <p>No orders match this view yet.</p>
+    </div>`;
+    return;
+  }
+  el.innerHTML = `<table>
+    <thead><tr><th>Order</th><th>Customer</th><th>Material</th><th>Amount</th><th>Status</th><th>Placed</th></tr></thead>
+    <tbody>${list.map(orderRowHtml).join('')}</tbody>
+  </table>`;
+  el.querySelectorAll('tr[data-order]').forEach(row=>{
+    row.addEventListener('click', ()=> openDrawer(row.getAttribute('data-order')));
+  });
+}
+
+function renderOrderFilters(){
+  const counts = {all: DATA.orders.length};
+  STAGES.forEach(s=> counts[s.key] = DATA.orders.filter(o=>o.status===s.key).length);
+  const chips = [{key:'all', label:'All'}, ...STAGES.map(s=>({key:s.key, label:statusLabel(s.key)}))];
+  const el = document.getElementById('orderFilters');
+  el.innerHTML = chips.map(c=>
+    `<button class="chip ${activeOrderFilter===c.key?'active':''}" data-filter="${c.key}">${c.label} · ${counts[c.key]}</button>`
+  ).join('');
+  el.querySelectorAll('.chip').forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      activeOrderFilter = chip.getAttribute('data-filter');
+      renderOrderFilters();
+      renderOrdersTable('ordersTable', filteredOrders());
+    });
+  });
+}
+
+/* ===================== Rendering: Customers table ===================== */
+function customerRowHtml(c){
+  const orders = DATA.orders.filter(o=>o.customerId===c.id);
+  const spend = orders.reduce((s,o)=>s+o.amount,0);
+  return `<tr>
+    <td>
+      <div class="cust-cell">
+        <div class="cust-avatar">${initials(c.name)}</div>
+        <div><div class="cust-name">${c.name}</div><div class="cust-meta">${c.phone}</div></div>
+      </div>
+    </td>
+    <td>${c.type}</td>
+    <td>${c.location}</td>
+    <td class="mono">${orders.length}</td>
+    <td class="mono">${fmtGHS(spend)}</td>
+    <td>${fmtDate(c.joined)}</td>
+  </tr>`;
+}
+function renderCustomersTable(){
+  const el = document.getElementById('customersTable');
+  let list = [...DATA.customers];
+  if(searchTerm){
+    const q = searchTerm.toLowerCase();
+    list = list.filter(c=>c.name.toLowerCase().includes(q));
+  }
+  if(list.length===0){
+    el.innerHTML = `<div class="empty-state"><p>No customers match your search.</p></div>`;
+    return;
+  }
+  el.innerHTML = `<table>
+    <thead><tr><th>Customer</th><th>Type</th><th>Location</th><th>Orders</th><th>Total spend</th><th>Joined</th></tr></thead>
+    <tbody>${list.map(customerRowHtml).join('')}</tbody>
+  </table>`;
+}
+
+/* ===================== Order Drawer (fabrication timeline signature) ===================== */
+function timelineHtml(order){
+  const cancelled = order.status === 'cancelled';
+  const currentIdx = STAGE_INDEX[order.status] ?? 0;
+  return `<div class="timeline">
+    <div class="timeline-track"></div>
+    ${STAGES.map((s,i)=>{
+      let cls = 'pending';
+      if(!cancelled){
+        if(i < currentIdx) cls = 'done';
+        else if(i === currentIdx) cls = 'current';
+      }
+      const iconDone = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>';
+      return `<div class="timeline-step ${cls}">
+        <div class="timeline-node">${cls==='done' ? iconDone : ''}</div>
+        <div class="timeline-content">
+          <div class="t-title">${s.label}</div>
+          <div class="t-sub">${cls==='current' ? 'Currently at this stage' : cls==='done' ? 'Completed' : 'Upcoming'}</div>
+        </div>
+      </div>`;
+    }).join('')}
+  </div>`;
+}
+
+function openDrawer(orderId){
+  const order = DATA.orders.find(o=>o.id===orderId);
+  if(!order) return;
+  const c = customerById(order.customerId) || {name:'Unknown', phone:'', location:''};
+  const drawer = document.getElementById('orderDrawer');
+  drawer.innerHTML = `
+    <div class="drawer-head">
+      <div>
+        <h3 class="mono">${order.id}</h3>
+        <span class="badge ${order.status}">${statusLabel(order.status)}</span>
+      </div>
+      <button class="drawer-close" id="drawerCloseBtn">✕</button>
+    </div>
+    <div class="drawer-body">
+      <div class="drawer-section">
+        <h4>Customer</h4>
+        <div class="cust-cell">
+          <div class="cust-avatar">${initials(c.name)}</div>
+          <div><div class="cust-name">${c.name}</div><div class="cust-meta">${c.phone} · ${c.location}</div></div>
+        </div>
+      </div>
+      <div class="drawer-section">
+        <h4>Order details</h4>
+        <div class="kv-grid">
+          <div class="kv-item"><div class="k">Material</div><div class="v">${order.material[0].toUpperCase()+order.material.slice(1)}</div></div>
+          <div class="kv-item"><div class="k">Area</div><div class="v">${order.area} sq ft</div></div>
+          <div class="kv-item"><div class="k">Amount</div><div class="v mono">${fmtGHS(order.amount)}</div></div>
+          <div class="kv-item"><div class="k">Placed</div><div class="v">${fmtDate(order.created)}</div></div>
+        </div>
+      </div>
+      <div class="drawer-section">
+        <h4>Delivery notes</h4>
+        <div class="v" style="font-weight:400; font-size:13.5px; line-height:1.5;">${order.notes || '—'}</div>
+      </div>
+      <div class="drawer-section">
+        <h4>Fabrication progress</h4>
+        ${timelineHtml(order)}
+      </div>
+      <div class="drawer-section">
+        <h4>Update status</h4>
+        <select id="drawerStatusSelect" style="width:100%; padding:9px 12px; border-radius:8px; border:1px solid var(--marble-border); background:var(--marble-panel-2); font-size:13.5px;">
+          ${['pending','confirmed','production','ready','delivered','cancelled'].map(s=>
+            `<option value="${s}" ${s===order.status?'selected':''}>${statusLabel(s)}</option>`
+          ).join('')}
+        </select>
+      </div>
+    </div>
+  `;
+  drawer.querySelector('#drawerCloseBtn').addEventListener('click', closeDrawer);
+  drawer.querySelector('#drawerStatusSelect').addEventListener('change', (e)=>{
+    order.status = e.target.value;
+    saveData(DATA);
+    renderAll();
+    openDrawer(orderId);
+    showToast('Order status updated');
+  });
+  document.getElementById('drawerOverlay').classList.add('open');
+  drawer.classList.add('open');
+}
+function closeDrawer(){
+  document.getElementById('drawerOverlay').classList.remove('open');
+  document.getElementById('orderDrawer').classList.remove('open');
+}
+document.getElementById('drawerOverlay').addEventListener('click', closeDrawer);
+
+/* ===================== Navigation ===================== */
+const pageMeta = {
+  overview:{title:'Dashboard', sub:'Customer & order activity at a glance'},
+  orders:{title:'Orders', sub:'Track every order from placement to delivery'},
+  customers:{title:'Customers', sub:'Everyone who has ordered from Denkyembo'},
+};
+function switchView(view){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('view-'+view).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active', b.getAttribute('data-view')===view));
+  document.getElementById('pageTitle').textContent = pageMeta[view].title;
+  document.getElementById('pageSub').textContent = pageMeta[view].sub;
+}
+document.querySelectorAll('.nav-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=> switchView(btn.getAttribute('data-view')));
+});
+document.querySelectorAll('[data-goto]').forEach(btn=>{
+  btn.addEventListener('click', ()=> switchView(btn.getAttribute('data-goto')));
+});
+
+/* ===================== Search ===================== */
+document.getElementById('searchInput').addEventListener('input', (e)=>{
+  searchTerm = e.target.value.trim();
+  renderOrdersTable('ordersTable', filteredOrders());
+  renderCustomersTable();
+});
+
+/* ===================== New Order modal ===================== */
+const orderModal = document.getElementById('orderModalOverlay');
+function openOrderModal(){
+  document.getElementById('ordCustomer').innerHTML = DATA.customers.map(c=>`<option value="${c.id}">${c.name}</option>`).join('');
+  orderModal.classList.add('open');
+}
+document.getElementById('newOrderBtn').addEventListener('click', openOrderModal);
+document.getElementById('closeOrderModal').addEventListener('click', ()=>orderModal.classList.remove('open'));
+document.getElementById('cancelOrderModal').addEventListener('click', ()=>orderModal.classList.remove('open'));
+document.getElementById('saveOrderBtn').addEventListener('click', ()=>{
+  const customerId = document.getElementById('ordCustomer').value;
+  if(!customerId){ showToast('Add a customer first'); return; }
+  const nextNum = 8840 + DATA.orders.length + 1;
+  const newOrder = {
+    id: 'ORD-'+nextNum,
+    customerId,
+    material: document.getElementById('ordMaterial').value,
+    area: Number(document.getElementById('ordArea').value) || 0,
+    amount: Number(document.getElementById('ordAmount').value) || 0,
+    status: document.getElementById('ordStatus').value,
+    notes: document.getElementById('ordNotes').value,
+    created: new Date().toISOString().slice(0,10),
+  };
+  DATA.orders.push(newOrder);
+  saveData(DATA);
+  orderModal.classList.remove('open');
+  renderAll();
+  showToast('Order created');
+});
+
+/* ===================== New Customer modal ===================== */
+const customerModal = document.getElementById('customerModalOverlay');
+document.getElementById('newCustomerBtn').addEventListener('click', ()=>customerModal.classList.add('open'));
+document.getElementById('closeCustomerModal').addEventListener('click', ()=>customerModal.classList.remove('open'));
+document.getElementById('cancelCustomerModal').addEventListener('click', ()=>customerModal.classList.remove('open'));
+document.getElementById('saveCustomerBtn').addEventListener('click', ()=>{
+  const name = document.getElementById('custName').value.trim();
+  if(!name){ showToast('Enter a customer name'); return; }
+  const nextNum = 1000 + DATA.customers.length + 1;
+  DATA.customers.push({
+    id: 'C-'+nextNum,
+    name,
+    phone: document.getElementById('custPhone').value.trim(),
+    type: document.getElementById('custType').value,
+    location: document.getElementById('custLocation').value.trim(),
+    joined: new Date().toISOString().slice(0,10),
+  });
+  saveData(DATA);
+  customerModal.classList.remove('open');
+  document.getElementById('custName').value='';
+  document.getElementById('custPhone').value='';
+  document.getElementById('custLocation').value='';
+  renderAll();
+  showToast('Customer added');
+});
+
+/* ===================== Theme toggle wire-up ===================== */
+document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+/* ===================== Profile dropdown ===================== */
+const avatarBtn = document.getElementById('avatarBtn');
+const profileDropdown = document.getElementById('profileDropdown');
+avatarBtn.addEventListener('click', (e)=>{
+  e.stopPropagation();
+  profileDropdown.classList.toggle('open');
+});
+document.addEventListener('click', (e)=>{
+  if(!document.getElementById('profileMenu').contains(e.target)){
+    profileDropdown.classList.remove('open');
+  }
+});
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape') profileDropdown.classList.remove('open');
+});
+
+/* ===================== Master render ===================== */
+function renderAll(){
+  renderStats();
+  renderOrderFilters();
+  renderOrdersTable('ordersTable', filteredOrders());
+  renderOrdersTable('recentOrdersTable', [...DATA.orders].sort((a,b)=>new Date(b.created)-new Date(a.created)).slice(0,5));
+  renderCustomersTable();
+}
+
+initTheme();
+renderAll();
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denkyembo StoneHub - Secure Sign Up</title>
+    <link rel="stylesheet" href="login.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="login-wrapper">
+        <!-- Left Brand Showcase Panel -->
+        <div class="login-brand-panel">
+            <div class="brand-content">
+                <span class="brand-badge">Enterprise Portal</span>
+                <h1>Denkyembo StoneHub</h1>
+                <p>Create your account to manage wholesale orders, project calculations, and custom natural stone shipments in one secure dashboard.</p>
+                <div class="brand-features">
+                    <span><i class="fa-solid fa-circle-check"></i> Real-time Subtotals</span>
+                    <span><i class="fa-solid fa-circle-check"></i> Instant Dimension Calculator</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Form Panel (Fits on one page perfectly) -->
+        <div class="login-form-panel">
+            <div class="login-box">
+                <div class="form-header">
+                    <h2>Create Account</h2>
+                    <p>Please enter your details to register your account.</p>
+                </div>
+
+                <form id="signupForm">
+                    <!-- Name Field -->
+                    <div class="input-group">
+                        <label for="name">Full Name</label>
+                        <div class="input-field">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" id="name" placeholder="John Doe" required>
+                        </div>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-field">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="email" placeholder="name@company.com" required>
+                        </div>
+                    </div>
+
+                    <!-- Address Field -->
+                    <div class="input-group">
+                        <label for="address">Address</label>
+                        <div class="input-field">
+                            <i class="fa-regular fa-map"></i>
+                            <input type="text" id="address" placeholder="123 Stone St, City" required>
+                        </div>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <div class="input-field">
+                            <i class="fa-regular fa-lock"></i>
+                            <input type="password" id="password" placeholder="••••••••" required>
+                        </div>
+                    </div>
+
+                    <!-- Password Again Field -->
+                    <div class="input-group">
+                        <label for="password_again">Password Again</label>
+                        <div class="input-field">
+                            <i class="fa-regular fa-lock"></i>
+                            <input type="password" id="password_again" placeholder="••••••••" required>
+                        </div>
+                    </div>
+
+                    <p id="errorMessage" class="error-message"></p>
+
+                    <button type="submit" class="submit-btn">Create Account</button>
+                </form>
+
+                <div class="form-footer">
+                    <p>Already have an account? <a href="login.html">Sign In</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="signup.js"></script>
+</body>
+</html>
