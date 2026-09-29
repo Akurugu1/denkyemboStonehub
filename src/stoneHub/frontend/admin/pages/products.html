@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>StoneHub - Products</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <h2>StoneHub</h2>
+
+            <span>Admin</span>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="../index.html"
+                class="nav-item"
+            >
+                <span>📊</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a
+                href="products.html"
+                class="nav-item active"
+            >
+                <span>📦</span>
+                <span>Products</span>
+            </a>
+
+
+            <a
+                href="orders.html"
+                class="nav-item"
+            >
+                <span>🛒</span>
+                <span>Orders</span>
+            </a>
+
+
+            <a
+                href="customers.html"
+                class="nav-item"
+            >
+                <span>👥</span>
+                <span>Customers</span>
+            </a>
+
+
+            <a
+                href="review.html"
+                class="nav-item"
+            >
+                <span>⭐</span>
+                <span>Reviews</span>
+            </a>
+
+
+            <a
+                href="payments.html"
+                class="nav-item"
+            >
+                <span>💳</span>
+                <span>Payments</span>
+            </a>
+
+
+            <a
+                href="reports.html"
+                class="nav-item"
+            >
+                <span>📈</span>
+                <span>Reports</span>
+            </a>
+
+
+            <a
+                href="settings.html"
+                class="nav-item"
+            >
+                <span>⚙️</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="#"
+                class="nav-item"
+            >
+                <span>🚪</span>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+
+            <div class="topbar-left">
+
+                <button class="menu-button">
+                    ☰
+                </button>
+
+                <h1>Products</h1>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="productSearch"
+                        placeholder="Search products..."
+                    >
+
+                </div>
+
+
+                <button class="notification-button">
+                    🔔
+                </button>
+
+
+                <div id="adminProfile"></div>
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PRODUCTS CONTENT
+             ================================================= -->
+
+        <section class="dashboard">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <h2>Products</h2>
+
+                    <p>
+                        Manage your StoneHub products.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="primary-button"
+                    id="addProductButton"
+                >
+                    + Add Product
+                </button>
+
+            </div>
+
+
+
+            <!-- PRODUCT TABLE -->
+
+            <div class="dashboard-card product-card">
+
+
+                <div class="table-container">
+
+                    <table class="products-table">
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Product</th>
+
+                                <th>Category</th>
+
+                                <th>Price</th>
+
+                                <th>Stock</th>
+
+                                <th>Status</th>
+
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="productsTableBody">
+
+                        </tbody>
+
+
+                    </table>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         ADD / EDIT PRODUCT MODAL
+         ===================================================== -->
+
+    <div
+        class="modal"
+        id="productModal"
+    >
+
+        <div class="modal-content">
+
+
+            <div class="modal-header">
+
+                <h3 id="modalTitle">
+                    Add Product
+                </h3>
+
+
+                <button
+                    class="close-modal"
+                    id="closeModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <form id="productForm">
+
+
+                <!-- Product name -->
+
+                <div class="form-group">
+
+                    <label for="productName">
+                        Product Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productName"
+                        placeholder="e.g. Premium Marble"
+                        required
+                    >
+
+                </div>
+
+                <!-- Description -->
+                <div class="form-group">
+
+                    <label for="productDescription">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="productDescription"
+                        placeholder="Describe the product"
+                    ></textarea>
+
+                </div>
+
+                <!-- Product Image -->
+<div class="form-group">
+
+    <label for="productImage">
+        Product Image
+    </label>
+
+    <input
+        type="file"
+        id="productImage"
+        accept="image/*"
+    >
+
+</div>
+
+                <!-- Dimensions -->
+                <div class="form-group">
+
+                        <label for="productDimensions">
+                            Dimensions
+                        </label>
+
+                        <input
+                            type="text"
+                            id="productDimensions"
+                            placeholder="e.g. 120cm x 60cm"
+                        >
+
+                </div>
+
+                <!-- Material -->
+                 <div class="form-group">
+
+                        <label for="productMaterial">
+                            Material
+                        </label>
+
+                        <input
+                            type="text"
+                            id="productMaterial"
+                            placeholder="e.g. Natural Granite"
+                        >
+
+                    </div>
+
+                    <!--Supplier  -->
+                    <div class="form-group">
+
+    <label for="productSupplier">
+        Supplier
+    </label>
+
+    <select id="productSupplier" required>
+
+        <option value="1">
+            Demkyembo Granite Ltd
+        </option>
+
+        <option value="2">
+            Stone Masters Ltd
+        </option>
+
+        <option value="3">
+            Elite Marble Ghana
+        </option>
+
+    </select>
+
+</div>
+                <!-- Category -->
+
+                <div class="form-group">
+
+                    <label for="productCategory">
+                        Category
+                    </label>
+
+                    <select id="productCategory">
+
+                        <option value="1">
+                            Granite
+                        </option>
+
+                        <option value="2">
+                            Marble
+                        </option>
+
+                        <option value="3">
+                            Granite
+                        </option>
+
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- Price -->
+
+                <div class="form-group">
+
+                    <label for="productPrice">
+                        Price
+                    </label>
+
+                    <input
+                        type="number"
+                        id="productPrice"
+                        placeholder="0.00"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- Stock -->
+
+                <div class="form-group">
+
+                    <label for="productStock">
+                        Stock
+                    </label>
+
+                    <input
+                        type="number"
+                        id="productStock"
+                        placeholder="0"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- Buttons -->
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="cancelProduct"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Save Product
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="../js/app.js"></script>
+    <script src="../components/profile.js"></script>
+    <script src="../js/products.js"></script>
+    <script>
+        loadAdminProfile();
+    </script>
+
+</body>
+
+</html>

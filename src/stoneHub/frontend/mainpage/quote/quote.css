@@ -1,0 +1,1234 @@
+/* ==========================================================
+   DENKYEMBO MARBLE & GRANITE
+   REQUEST QUOTE PAGE
+   ========================================================== */
+
+
+/* ==========================================================
+   GOOGLE FONT
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+
+/* ==========================================================
+   ROOT VARIABLES
+   ========================================================== */
+
+:root {
+
+    --primary: #F24234;
+    --primary-dark: #d8382b;
+
+    --black: #111111;
+    --dark: #222222;
+
+    --gray: #666666;
+
+    /* CREAM / STONE PALETTE */
+    --cream: #f5f3ef;
+    --cream-light: #f7f5f2;
+    --cream-dark: #ebe7e1;
+    --cream-soft: #f6f4f1;
+
+    --white: #ffffff;
+
+    --border: #dedad4;
+    --border-light: #e5e1db;
+
+    --shadow:
+        0 10px 35px rgba(0, 0, 0, 0.08);
+
+    --nav-shadow:
+        0 2px 12px rgba(0, 0, 0, 0.08);
+
+    --radius: 18px;
+}
+
+
+/* ==========================================================
+   RESET
+   ========================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    width: 100%;
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+
+body {
+    width: 100%;
+    min-height: 100vh;
+
+    font-family: 'Outfit', sans-serif;
+
+    background: var(--cream);
+
+    color: var(--dark);
+
+    line-height: 1.6;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+button,
+input,
+textarea,
+select {
+    font-family: 'Outfit', sans-serif;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ==========================================================
+   LOGO HEADER
+   ========================================================== */
+
+.site-header {
+    width: 100%;
+
+    position: relative;
+
+    z-index: 900;
+
+    background: var(--white);
+
+    box-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+
+.header-container {
+    width: 90%;
+    max-width: 1300px;
+
+    min-height: 105px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-start;
+}
+
+
+/* ==========================================================
+   LOGO
+   ========================================================== */
+
+.logo {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    text-decoration: none;
+}
+
+
+.logo img {
+    width: 240px;
+
+    height: auto;
+
+    display: block;
+
+    object-fit: contain;
+
+    transition: transform 0.3s ease;
+}
+
+
+.logo img:hover {
+    transform: scale(1.02);
+}
+
+
+/* ==========================================================
+   STICKY NAVIGATION
+   ========================================================== */
+
+.quote-navbar {
+    width: 100%;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    background: var(--white);
+
+    border-top: 1px solid var(--border-light);
+
+    border-bottom: 1px solid var(--border-light);
+
+    box-shadow: var(--nav-shadow);
+}
+
+
+/* ==========================================================
+   NAVIGATION WRAPPER
+   ========================================================== */
+
+.quote-nav-wrapper {
+    width: 90%;
+
+    max-width: 1300px;
+
+    min-height: 70px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+/* ==========================================================
+   NAVIGATION LINKS
+   ========================================================== */
+
+.quote-nav-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 40px;
+
+    flex-shrink: 0;
+}
+
+
+.quote-nav-links li {
+    margin: 0;
+    padding: 0;
+}
+
+
+.quote-nav-links a {
+    position: relative;
+
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--dark);
+
+    font-family: 'Outfit', sans-serif;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease;
+}
+
+
+/* ==========================================================
+   NAVIGATION UNDERLINE
+   ========================================================== */
+
+.quote-nav-links a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 17px;
+
+    width: 0;
+
+    height: 2px;
+
+    background: var(--primary);
+
+    transition:
+        width 0.3s ease;
+}
+
+
+.quote-nav-links a:hover {
+    color: var(--primary);
+}
+
+
+.quote-nav-links a:hover::after {
+    width: 100%;
+}
+
+
+/* ==========================================================
+   RIGHT NAVIGATION ACTIONS
+   ========================================================== */
+
+.quote-nav-actions {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    flex-shrink: 0;
+}
+
+
+/* ==========================================================
+   CURRENCY SWITCHER
+   ========================================================== */
+
+.currency-switcher {
+    height: 40px;
+
+    min-width: 55px;
+
+    padding: 0 5px;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: var(--dark);
+
+    font-family: 'Outfit', sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        color 0.3s ease;
+}
+
+
+.currency-switcher:hover {
+    color: var(--primary);
+}
+
+
+/* ==========================================================
+   GENERAL NAV ICON
+   ========================================================== */
+
+.nav-icon {
+    width: 42px;
+
+    height: 42px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: var(--white);
+
+    color: var(--dark);
+
+    font-size: 20px;
+
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.nav-icon i {
+    font-size: 20px;
+
+    line-height: 1;
+
+    pointer-events: none;
+}
+
+
+.nav-icon:hover {
+    color: var(--primary);
+
+    background: var(--cream-light);
+
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================================
+   ACCOUNT ICON
+   ========================================================== */
+
+.account-icon {
+    width: 40px;
+
+    height: 40px;
+
+    border: 1px solid var(--border-light);
+
+    background: var(--white);
+
+    color: var(--black);
+}
+
+
+.account-icon i {
+    font-size: 16px;
+}
+
+
+.account-icon:hover {
+    background: var(--primary);
+
+    border-color: var(--primary);
+
+    color: var(--white);
+}
+
+
+/* ==========================================================
+   DELIVERY ICON
+   FAST TRUCK
+   ========================================================== */
+
+.delivery-icon {
+    width: 42px;
+
+    height: 42px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--white);
+
+    color: var(--dark);
+
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.delivery-icon i {
+    font-size: 20px;
+
+    line-height: 1;
+
+    pointer-events: none;
+}
+
+
+.delivery-icon:hover {
+    color: var(--primary);
+
+    background: var(--cream-light);
+
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================================
+   CART ICON
+   ========================================================== */
+
+.cart-icon {
+    width: 42px;
+
+    height: 42px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--white);
+
+    color: var(--dark);
+
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.cart-icon i {
+    font-size: 20px;
+
+    line-height: 1;
+}
+
+
+.cart-icon:hover {
+    color: var(--primary);
+
+    background: var(--cream-light);
+
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================================
+   CART BADGE
+   ========================================================== */
+
+.cart-badge {
+    position: absolute;
+
+    top: -7px;
+
+    right: -8px;
+
+    width: 18px;
+
+    height: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+
+    color: var(--white);
+
+    font-family: 'Outfit', sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    line-height: 1;
+}
+
+
+/* ==========================================================
+   QUOTE PAGE
+   ========================================================== */
+
+.quote-page {
+    width: 100%;
+
+    min-height: calc(100vh - 175px);
+
+    padding: 80px 20px 100px;
+
+    background: var(--cream);
+}
+
+
+/* ==========================================================
+   QUOTE CONTAINER
+   ========================================================== */
+
+.quote-container {
+    width: 90%;
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+}
+
+
+/* ==========================================================
+   RETURN TO PRODUCT
+   ========================================================== */
+
+.back-to-product {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 35px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--primary);
+
+    font-family: 'Outfit', sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.back-to-product:hover {
+    color: var(--primary-dark);
+
+    transform: translateX(-4px);
+}
+
+
+.back-to-product i {
+    font-size: 12px;
+}
+
+
+/* ==========================================================
+   QUOTE INTRODUCTION
+   ========================================================== */
+
+.quote-intro {
+    max-width: 700px;
+
+    margin: 0 auto 50px;
+
+    text-align: center;
+}
+
+
+.quote-label {
+    display: inline-block;
+
+    color: var(--primary);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+}
+
+
+.quote-intro h1 {
+    margin: 15px 0 20px;
+
+    color: var(--black);
+
+    font-size: 48px;
+
+    font-weight: 700;
+
+    line-height: 1.15;
+}
+
+
+.quote-intro p {
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    color: var(--gray);
+
+    font-size: 17px;
+
+    line-height: 1.8;
+}
+
+
+/* ==========================================================
+   FORM WRAPPER
+   ========================================================== */
+
+.quote-form-wrapper {
+    width: 100%;
+
+    padding: 50px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    background: var(--white);
+
+    box-shadow: var(--shadow);
+}
+
+
+/* ==========================================================
+   QUOTE FORM
+   ========================================================== */
+
+.quote-form {
+    width: 100%;
+
+    display: grid;
+
+    gap: 22px;
+}
+
+
+/* ==========================================================
+   FORM GROUP
+   ========================================================== */
+
+.form-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+/* ==========================================================
+   FORM LABEL
+   ========================================================== */
+
+.form-group label {
+    color: var(--black);
+
+    font-family: 'Outfit', sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+
+/* ==========================================================
+   INPUTS
+   ========================================================== */
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    padding: 15px 17px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: var(--cream-light);
+
+    color: var(--black);
+
+    font-family: 'Outfit', sans-serif;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #999999;
+}
+
+
+/* ==========================================================
+   INPUT FOCUS
+   ========================================================== */
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+
+    background: var(--white);
+
+    box-shadow:
+        0 0 0 3px rgba(242, 66, 52, 0.08);
+}
+
+
+/* ==========================================================
+   TEXTAREA
+   ========================================================== */
+
+.form-group textarea {
+    min-height: 150px;
+
+    resize: vertical;
+}
+
+
+/* ==========================================================
+   SUBMIT BUTTON
+   ========================================================== */
+
+.submit-quote-btn {
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 17px 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    background: var(--primary);
+
+    color: var(--white);
+
+    font-family: 'Outfit', sans-serif;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.submit-quote-btn:hover {
+    background: var(--primary-dark);
+
+    transform: translateY(-3px);
+}
+
+
+.submit-quote-btn i {
+    font-size: 14px;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.submit-quote-btn:hover i {
+    transform: translateX(5px);
+}
+
+
+/* ==========================================================
+   RESPONSIVE - 1100px
+   ========================================================== */
+
+@media (max-width: 1100px) {
+
+    .quote-nav-links {
+        gap: 20px;
+    }
+
+    .quote-nav-actions {
+        gap: 12px;
+    }
+}
+
+
+/* ==========================================================
+   RESPONSIVE - 900px
+   ========================================================== */
+
+@media (max-width: 900px) {
+
+    .quote-nav-wrapper {
+        width: 95%;
+
+        gap: 20px;
+    }
+
+    .quote-nav-links {
+        gap: 16px;
+    }
+
+    .quote-nav-links a {
+        font-size: 14px;
+    }
+
+    .quote-nav-actions {
+        gap: 9px;
+    }
+
+    .currency-switcher {
+        font-size: 14px;
+    }
+}
+
+
+/* ==========================================================
+   RESPONSIVE - 768px
+   ========================================================== */
+
+@media (max-width: 768px) {
+
+    /* LOGO HEADER */
+
+    .header-container {
+        width: 90%;
+
+        min-height: 90px;
+    }
+
+    .logo img {
+        width: 210px;
+    }
+
+
+    /* STICKY NAVIGATION */
+
+    .quote-navbar {
+        position: sticky;
+
+        top: 0;
+    }
+
+    .quote-nav-wrapper {
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 12px 20px;
+
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .quote-nav-links {
+        width: 100%;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 6px 20px;
+    }
+
+    .quote-nav-links a {
+        height: 38px;
+
+        font-size: 14px;
+    }
+
+    .quote-nav-links a::after {
+        bottom: 2px;
+    }
+
+    .quote-nav-actions {
+        width: 100%;
+
+        justify-content: center;
+
+        gap: 15px;
+    }
+
+
+    /* QUOTE CONTENT */
+
+    .quote-page {
+        padding: 60px 15px 80px;
+    }
+
+    .quote-container {
+        width: 100%;
+    }
+
+    .quote-intro h1 {
+        font-size: 38px;
+    }
+
+    .quote-intro p {
+        font-size: 16px;
+    }
+
+    .quote-form-wrapper {
+        padding: 35px 25px;
+
+        border-radius: 16px;
+    }
+}
+
+
+/* ==========================================================
+   RESPONSIVE - 600px
+   ========================================================== */
+
+@media (max-width: 600px) {
+
+    .header-container {
+        min-height: 80px;
+    }
+
+    .logo img {
+        width: 190px;
+    }
+
+    .quote-nav-wrapper {
+        padding: 10px 15px;
+    }
+
+    .quote-nav-links {
+        gap: 5px 14px;
+    }
+
+    .quote-nav-links a {
+        font-size: 13px;
+
+        height: 36px;
+    }
+
+    .quote-nav-actions {
+        gap: 11px;
+    }
+
+    .currency-switcher {
+        height: 40px;
+
+        font-size: 13px;
+    }
+
+    .nav-icon {
+        width: 40px;
+
+        height: 40px;
+    }
+
+    .nav-icon i {
+        font-size: 18px;
+    }
+
+    .account-icon {
+        width: 40px;
+
+        height: 40px;
+    }
+
+
+    /* QUOTE PAGE */
+
+    .quote-page {
+        padding: 45px 15px 60px;
+    }
+
+    .quote-intro {
+        margin-bottom: 35px;
+    }
+
+    .quote-intro h1 {
+        font-size: 32px;
+    }
+
+    .quote-label {
+        font-size: 12px;
+
+        letter-spacing: 2px;
+    }
+
+    .quote-intro p {
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+    .quote-form-wrapper {
+        padding: 28px 20px;
+
+        border-radius: 15px;
+    }
+
+    .form-group {
+        gap: 7px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 14px;
+
+        font-size: 14px;
+    }
+
+    .submit-quote-btn {
+        padding: 15px 20px;
+
+        font-size: 15px;
+    }
+}
+
+
+/* ==========================================================
+   RESPONSIVE - 480px
+   ========================================================== */
+
+@media (max-width: 480px) {
+
+    .header-container {
+        min-height: 70px;
+    }
+
+    .logo img {
+        width: 165px;
+    }
+
+    .quote-nav-wrapper {
+        padding: 9px 10px;
+    }
+
+    .quote-nav-links {
+        gap: 4px 10px;
+    }
+
+    .quote-nav-links a {
+        font-size: 12px;
+
+        height: 34px;
+    }
+
+    .quote-nav-actions {
+        gap: 8px;
+    }
+
+    .currency-switcher {
+        min-width: 45px;
+
+        padding: 0 3px;
+
+        font-size: 12px;
+    }
+
+    .nav-icon,
+    .account-icon {
+        width: 38px;
+
+        height: 38px;
+    }
+
+    .nav-icon i {
+        font-size: 17px;
+    }
+
+    .account-icon i {
+        font-size: 15px;
+    }
+
+    .cart-badge {
+        top: -4px;
+
+        right: -5px;
+
+        width: 17px;
+
+        height: 17px;
+
+        font-size: 9px;
+    }
+
+
+    /* QUOTE PAGE */
+
+    .quote-page {
+        padding: 40px 12px 50px;
+    }
+
+    .quote-intro h1 {
+        font-size: 29px;
+    }
+
+    .quote-form-wrapper {
+        padding: 23px 16px;
+    }
+
+    .back-to-product {
+        font-size: 12px;
+
+        margin-bottom: 25px;
+    }
+}

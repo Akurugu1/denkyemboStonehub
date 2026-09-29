@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Makes the dashboard work properly on phones/tablets -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StoneHub Admin Dashboard</title>
+
+    <!-- Our CSS will be connected here later -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <!-- Logo -->
+        <div class="sidebar-logo">
+            <h2>Administrator</h2>
+            <span>Admin</span>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="sidebar-nav">
+
+            <a href="#" class="nav-item active">
+                <span>📊</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="pages/products.html" class="nav-item">
+                <span>📦</span>
+                <span>Products</span>
+            </a>
+
+            <a href="pages/orders.html" class="nav-item">
+                <span>🛒</span>
+                <span>Orders</span>
+            </a>
+
+            <a href="pages/customers.html" class="nav-item">
+                <span>👥</span>
+                <span>Customers</span>
+            </a>
+
+            <a href="pages/review.html" class="nav-item">
+                <span>⭐</span>
+                <span>Reviews</span>
+            </a>
+
+            <a href="pages/payments.html" class="nav-item">
+                <span>💳</span>
+                <span>Payments</span>
+            </a>
+
+            <a href="pages/reports.html" class="nav-item">
+                <span>📈</span>
+                <span>Reports</span>
+            </a>
+
+            <a href="pages/settings.html" class="nav-item">
+                <span>⚙️</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+        <!-- Logout -->
+        <div class="sidebar-bottom">
+            <a href="../mainpage/index.html" class="nav-item">
+                <span>🚪</span>
+                <span>Logout</span>
+            </a>
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+
+        <!-- Top Bar -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+                <button class="menu-button">
+                    ☰
+                </button>
+
+                <h1>Dashboard</h1>
+            </div>
+
+            <div class="topbar-right">
+
+                <!-- Search -->
+                <div class="search-box">
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                    >
+                </div>
+
+                <!-- Notifications -->
+                <button class="notification-button">
+                    🔔
+                </button>
+
+                <!-- Admin Profile -->
+                <div id="adminProfile"></div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= DASHBOARD ================= -->
+        <section class="dashboard">
+
+            <!-- Welcome -->
+            <div class="welcome-section">
+                <h2>Welcome back, Admin 👋</h2>
+                <p>Here's what's happening with StoneHub today.</p>
+            </div>
+
+
+            <!-- ================= STATISTICS ================= -->
+            <section class="stats-grid">
+
+                <!-- Sales -->
+                <div class="stat-card">
+                    <span class="stat-title">Total Sales</span>
+                    <h3>GH₵ 0.00</h3>
+                    <span class="stat-change">+0% this month</span>
+                </div>
+
+                <!-- Orders -->
+                <div class="stat-card">
+                    <span class="stat-title">Total Orders</span>
+                    <h3>0</h3>
+                    <span class="stat-change">+0% this month</span>
+                </div>
+
+                <!-- Customers -->
+                <div class="stat-card">
+                    <span class="stat-title">Customers</span>
+                    <h3>0</h3>
+                    <span class="stat-change">+0% this month</span>
+                </div>
+
+                <!-- Products -->
+                <div class="stat-card">
+                    <span class="stat-title">Products</span>
+                    <h3>0</h3>
+                    <span class="stat-change">0 low stock</span>
+                </div>
+
+            </section>
+
+
+            <!-- ================= CHARTS ================= -->
+            <section class="dashboard-grid">
+
+                <!-- Sales Chart -->
+                <div class="dashboard-card sales-chart">
+                    <div class="card-header">
+                        <h3>Sales Overview</h3>
+
+                        <select>
+                            <option>Last 7 Days</option>
+                            <option>Last 30 Days</option>
+                            <option>Last 12 Months</option>
+                        </select>
+                    </div>
+
+                    <div class="chart-placeholder">
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                </div>
+
+
+                <!-- Recent Orders -->
+                <div class="dashboard-card recent-orders">
+
+                    <div class="card-header">
+                        <h3>Recent Orders</h3>
+
+                        <a href="#">View All</a>
+                    </div>
+
+                    <div class="orders-placeholder">
+                        <table class="orders-table">
+                            <thead>
+                                <tr>
+                                    <th>Orders</th>
+                                    <th>Customers</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+
+                            <tbody id="ordersTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= LOWER SECTION ================= -->
+            <section class="dashboard-grid">
+
+                <!-- Recent Customers -->
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+                        <h3>Recent Customers</h3>
+
+                        <a href="#">View All</a>
+                    </div>
+
+                    <div class="customers-list" id="customerList">
+                        
+                    </div>
+
+                </div>
+
+
+                <!-- Low Stock -->
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+                        <h3>Low Stock Products</h3>
+
+                        <a href="#">View All</a>
+                    </div>
+
+                    <div class="stock-list" id="stockList">
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <!-- Our JavaScript will be connected here later -->
+    <script src="js/app.js"></script>
+    <script src="components/profile.js"></script>
+
+        <script>
+    loadAdminProfile();
+</script>
+
+</body>
+
+</html>

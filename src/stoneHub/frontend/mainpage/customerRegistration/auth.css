@@ -1,0 +1,270 @@
+/* ==========================================================
+   DENKYEMBO STONEHUB - PASSWORD AUTHENTICATION
+   Forgot Password & Reset Password
+========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100%;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(17, 17, 17, 0.88),
+            rgba(17, 17, 17, 0.96)
+        ),
+        url('../images/hero.jpg');
+
+    background-size: cover;
+    background-position: center;
+    padding: 30px;
+}
+
+
+/* ==========================================================
+   AUTH CONTAINER
+========================================================== */
+
+.login-container {
+    width: 100%;
+    max-width: 500px;
+}
+
+
+/* ==========================================================
+   AUTH CARD
+========================================================== */
+
+.login-box {
+    width: 100%;
+    background: #ffffff;
+    padding: 45px;
+    border-radius: 18px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.35);
+
+    text-align: center;
+}
+
+
+/* ==========================================================
+   BRAND
+========================================================== */
+
+.login-box h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 8px;
+}
+
+.login-box h1::after {
+    content: "";
+    display: block;
+    width: 45px;
+    height: 3px;
+    background: #f04b37;
+    margin: 12px auto 22px;
+    border-radius: 10px;
+}
+
+
+/* ==========================================================
+   TITLE
+========================================================== */
+
+.login-box h2 {
+    font-size: 25px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 10px;
+}
+
+
+/* ==========================================================
+   DESCRIPTION
+========================================================== */
+
+.welcome {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+}
+
+
+/* ==========================================================
+   FORM
+========================================================== */
+
+#forgotPasswordForm,
+#resetPasswordForm {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 10px;
+}
+
+#resetPasswordForm {
+    gap: 8px;
+}
+
+.login-box label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 6px;
+}
+
+
+/* ==========================================================
+   INPUTS
+========================================================== */
+
+.login-box input {
+    width: 100%;
+    padding: 14px 15px;
+
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #fafafa;
+
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+
+    transition: all 0.25s ease;
+}
+
+.login-box input:focus {
+    border-color: #f04b37;
+    background: #fff;
+
+    box-shadow:
+        0 0 0 4px rgba(240, 75, 55, 0.08);
+}
+
+
+/* ==========================================================
+   MESSAGE
+========================================================== */
+
+.error-message {
+    min-height: 18px;
+    margin: 4px 0;
+
+    color: #d8382b;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+
+/* ==========================================================
+   BUTTON
+========================================================== */
+
+.login-box button {
+    width: 100%;
+
+    border: none;
+    border-radius: 10px;
+
+    padding: 15px;
+
+    background: #f04b37;
+    color: #ffffff;
+
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.login-box button:hover {
+    background: #d8382b;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 22px rgba(240, 75, 55, 0.25);
+}
+
+.login-box button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* ==========================================================
+   BACK TO LOGIN
+========================================================== */
+
+#backToLogin,
+.login-box > a {
+    display: inline-block;
+
+    margin-top: 22px;
+
+    color: #555;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+#backToLogin:hover,
+.login-box > a:hover {
+    color: #f04b37;
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 18px;
+    }
+
+    .login-box {
+        padding: 32px 24px;
+        border-radius: 14px;
+    }
+
+    .login-box h1 {
+        font-size: 24px;
+    }
+
+    .login-box h2 {
+        font-size: 22px;
+    }
+
+}

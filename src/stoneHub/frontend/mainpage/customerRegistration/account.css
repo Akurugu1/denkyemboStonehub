@@ -1,0 +1,425 @@
+/* ==========================================================
+   DENKYEMBO STONEHUB - ACCOUNT PAGE
+   ========================================================== */
+
+/* ---------- RESET ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ---------- PAGE ---------- */
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: #ffffff;
+    color: #111111;
+}
+
+
+/* ==========================================================
+   MAIN TWO-COLUMN LAYOUT
+   ========================================================== */
+
+.account-page {
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* ==========================================================
+   LEFT PHOTO
+   ========================================================== */
+
+.account-photo {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 50vw;
+    height: 100vh;
+
+    margin: 0;
+    padding: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(17, 17, 17, 0.85),
+            rgba(17, 17, 17, 0.85)
+        ),
+        url("../images/hero.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    z-index: 1;
+}
+
+
+/* ==========================================================
+   PHOTO CONTENT
+   ========================================================== */
+
+.photo-overlay {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    padding: 60px;
+}
+
+.brand-content {
+    max-width: 450px;
+
+    color: #ffffff;
+}
+
+
+/* ---------- Badge ---------- */
+
+.brand-badge {
+    display: inline-block;
+
+    background: #f04b37;
+    color: #ffffff;
+
+    padding: 6px 14px;
+
+    border-radius: 50px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    margin-bottom: 30px;
+}
+
+
+/* ---------- Heading ---------- */
+
+.brand-content h1 {
+    font-size: 40px;
+
+    font-weight: 800;
+
+    line-height: 1.1;
+
+    color: #ffffff;
+
+    margin-bottom: 15px;
+}
+
+
+/* ---------- Description ---------- */
+
+.brand-content p {
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    color: #cccccc;
+
+    margin-bottom: 30px;
+}
+
+
+/* ---------- Features ---------- */
+
+.brand-features {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.brand-features div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color: #eeeeee;
+
+    font-size: 14px;
+}
+
+.brand-features i {
+    color: #f04b37;
+
+    font-size: 15px;
+
+    width: 18px;
+
+    text-align: center;
+}
+
+
+/* ==========================================================
+   RIGHT WHITE PANEL
+   ========================================================== */
+
+.account-panel {
+    width: 50vw;
+
+    min-height: 100vh;
+
+    margin-left: 50vw;
+
+    background: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 40px;
+}
+
+
+/* ==========================================================
+   RIGHT CONTENT
+   ========================================================== */
+
+.account-content {
+    width: 100%;
+
+    max-width: 400px;
+}
+
+
+/* ---------- Header ---------- */
+
+.account-header {
+    margin-bottom: 30px;
+}
+
+.account-header h2 {
+    font-size: 28px;
+
+    font-weight: 700;
+
+    color: #111111;
+
+    margin-bottom: 8px;
+}
+
+.account-header p {
+    font-size: 14px;
+
+    color: #666666;
+
+    line-height: 1.5;
+}
+
+
+/* ==========================================================
+   ACCOUNT BUTTONS
+   ========================================================== */
+
+.account-button {
+    width: 100%;
+
+    min-height: 68px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 15px 18px;
+
+    margin-bottom: 15px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+}
+
+
+/* ---------- Button Icon ---------- */
+
+.account-button > i {
+    width: 25px;
+
+    min-width: 25px;
+
+    margin-right: 15px;
+
+    text-align: center;
+
+    font-size: 18px;
+}
+
+
+/* ---------- Button Text ---------- */
+
+.button-text {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.button-text strong {
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+.button-text span {
+    font-size: 12px;
+}
+
+
+/* ==========================================================
+   LOGIN BUTTON
+   ========================================================== */
+
+.login-button {
+    background: #ffffff;
+
+    border: 1px solid #e1e1e1;
+
+    color: #111111;
+}
+
+.login-button i {
+    color: #f04b37;
+}
+
+.login-button .button-text {
+    color: #111111;
+}
+
+.login-button .button-text strong {
+    color: #111111;
+}
+
+.login-button .button-text span {
+    color: #666666;
+}
+
+.login-button:hover {
+    border-color: #f04b37;
+
+    background: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 20px rgba(240, 75, 55, 0.12);
+}
+
+
+/* ==========================================================
+   CREATE ACCOUNT BUTTON
+   ========================================================== */
+
+.signup-button {
+    background: #ffffff;
+
+    border: 1px solid #e1e1e1;
+
+    color: #111111;
+}
+
+.signup-button i {
+    color: #f04b37;
+}
+
+.signup-button .button-text {
+    color: #111111;
+}
+
+.signup-button .button-text strong {
+    color: #111111;
+}
+
+.signup-button .button-text span {
+    color: #666666;
+}
+
+.signup-button:hover {
+    border-color: #f04b37;
+
+    background: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 20px rgba(240, 75, 55, 0.12);
+}
+
+
+/* ==========================================================
+   RETURN TO STORE
+   ========================================================== */
+
+.return-store {
+    margin-top: 25px;
+
+    text-align: center;
+
+    font-size: 13px;
+}
+
+.return-store span {
+    color: #111111;
+}
+
+.return-store a {
+    color: #111111;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    margin-left: 4px;
+}
+
+.return-store a:hover {
+    color: #f04b37;
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 900px) {
+
+    .account-photo {
+        display: none;
+    }
+
+    .account-panel {
+        width: 100%;
+
+        margin-left: 0;
+
+        min-height: 100vh;
+
+        padding: 30px;
+    }
+
+}

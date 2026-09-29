@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0"> 
+
+    <title>Denkyembo Marble & Granite</title>
+
+
+    <!-- ======================================================
+         GOOGLE FONT
+    ======================================================= -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+
+    <!-- ======================================================
+         FONT AWESOME
+    ======================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+    <!-- ======================================================
+         CSS
+    ======================================================= -->
+
+    <link rel="stylesheet"
+          href="denkyembo.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================================
+     HEADER
+========================================================== -->
+
+<header class="header">
+
+    <div class="container header-container">
+
+        <a href="index.html"
+           class="logo">
+
+            <img
+                src="images/logo.png"
+                alt="Denkyembo Logo">
+
+        </a>
+
+
+        <a
+            href="quote/quote.html"
+            class="quote-btn">
+
+            Request Quote
+
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- ==========================================================
+     NAVIGATION
+========================================================== -->
+
+<nav class="navbar">
+
+    <div class="container nav-wrapper">
+
+
+        <!-- ==================================================
+             NAVIGATION LINKS
+        =================================================== -->
+
+        <ul class="nav-links">
+
+            <li>
+                <a
+                    href="index.html"
+                    class="active">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="#collections">
+                    Collections
+                </a>
+            </li>
+
+            <li>
+                <a href="project/project.html">
+                    Projects
+                </a>
+            </li>
+
+            <li>
+                <a href="about/about.html">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="contact/contact.html">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+
+
+        <!-- ==================================================
+             NAVIGATION ACTIONS
+        =================================================== -->
+
+        <div class="nav-actions">
+
+
+            <!-- ==================================================
+                 CURRENCY
+            =================================================== -->
+
+            <select
+                class="currency-switcher"
+                aria-label="Currency">
+
+                <option value="GHS">
+                    GHS
+                </option>
+
+                <option value="USD">
+                    USD
+                </option>
+
+                <option value="EUR">
+                    EUR
+                </option>
+
+            </select>
+
+
+
+            <!-- ==================================================
+                 QUANTITY CALCULATOR
+            =================================================== -->
+
+            <div class="calculator-wrapper">
+
+
+                <button
+                    type="button"
+                    class="calculator-btn"
+                    id="calculatorBtn"
+                    aria-label="Open quantity calculator">
+
+                    <i class="fa-solid fa-calculator"></i>
+
+                </button>
+
+
+
+                <!-- CALCULATOR DROPDOWN -->
+
+                <div
+                    class="calculator-dropdown"
+                    id="calculatorDropdown">
+
+
+                    <div class="calculator-header">
+
+                        <h3>
+                            Stone Quantity Calculator
+                        </h3>
+
+
+                        <button
+                            type="button"
+                            class="calculator-close"
+                            id="calculatorClose"
+                            aria-label="Close calculator">
+
+                            <i class="fa-solid fa-xmark"></i>
+
+                        </button>
+
+                    </div>
+
+
+
+                    <p class="calculator-description">
+
+                        Enter the area you want to cover in metres.
+                        The calculator will determine the required
+                        stone slabs in m².
+
+                    </p>
+
+
+
+                    <!-- LENGTH -->
+
+                    <label for="length">
+                        Length (m)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="length"
+                        placeholder="e.g. 4"
+                        min="0.01"
+                        step="0.01">
+
+
+
+                    <!-- WIDTH -->
+
+                    <label for="width">
+                        Width (m)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="width"
+                        placeholder="e.g. 3"
+                        min="0.01"
+                        step="0.01">
+
+
+
+                    <!-- SLAB SIZE -->
+
+                    <label for="slabSize">
+                        Select slab area
+                    </label>
+
+                    <select id="slabSize">
+
+                        <option value="">
+                            Select slab size
+                        </option>
+
+                        <option value="4.50">
+                            300 × 150 cm — 4.50 m²
+                        </option>
+
+                        <option value="3.75">
+                            250 × 150 cm — 3.75 m²
+                        </option>
+
+                        <option value="3.92">
+                            280 × 140 cm — 3.92 m²
+                        </option>
+
+                    </select>
+
+
+
+                    <!-- CALCULATE -->
+
+                    <button
+                        type="button"
+                        class="calculate-btn"
+                        id="calculateQuantity">
+
+                        <i class="fa-solid fa-calculator"></i>
+
+                        Calculate
+
+                    </button>
+
+
+
+                    <!-- RESULT -->
+
+                    <div
+                        class="calculator-result"
+                        id="calculatorResult">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 ACCOUNT
+            =================================================== -->
+
+            <a
+                href="customerRegistration/account.html"
+                class="nav-icon account-icon"
+                aria-label="Account">
+
+                <i class="fa-regular fa-user"></i>
+
+            </a>
+
+
+
+            <!-- ==================================================
+                 DELIVERY
+            =================================================== -->
+
+            <a
+                href="cart/delivery/delivery.html"
+                class="nav-icon delivery-icon"
+                aria-label="Delivery and Tracking">
+
+                <i class="fa-solid fa-truck-fast"></i>
+
+            </a>
+
+
+
+            <!-- ==================================================
+                 CART
+            =================================================== -->
+
+            <a
+                href="cart/cart.html"
+                class="nav-icon cart-icon"
+                aria-label="Shopping Cart">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span
+                    class="cart-badge"
+                    id="cartBadge">
+                    0
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ==========================================================
+     HERO
+========================================================== -->
+
+<section class="hero">
+
+    <div class="hero-overlay">
+
+        <div class="container">
+
+            <div class="hero-content">
+
+                <span class="hero-subtitle">
+
+                    PREMIUM MARBLE • GRANITE • NATURAL STONE
+
+                </span>
+
+
+                <h1>
+
+                    Elevating Spaces<br>
+                    with Timeless Stone
+
+                </h1>
+
+
+                <p>
+
+                    Denkyembo brings elegance to life with premium
+                    marble, granite, and natural stone—perfect for
+                    transforming any project into a masterpiece.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="about/about.html"
+                        class="primary-btn">
+
+                        About Us
+
+                    </a>
+
+
+                    <a
+                        href="catalogue/catalogue.html"
+                        class="primary-btn">
+
+                        Explore Catalogue
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==========================================================
+     COLLECTIONS
+========================================================== -->
+
+<section
+    class="collections"
+    id="collections">
+
+    <div class="container">
+
+
+        <div class="section-title">
+
+            <span>
+                OUR COLLECTIONS
+            </span>
+
+
+            <h2>
+                Premium Stone Collections
+            </h2>
+
+
+            <p>
+
+                Discover our carefully selected range of premium
+                natural and engineered stones, designed to elevate
+                kitchens, bathrooms, commercial spaces, and luxury
+                interiors.
+
+            </p>
+
+        </div>
+
+
+        <div
+            class="collection-grid"
+            id="product-container">
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==========================================================
+     WHY CHOOSE US
+========================================================== -->
+
+<section class="why-us">
+
+    <div class="container">
+
+
+        <div class="section-title">
+
+            <h2>
+                Why Choose Denkyembo
+            </h2>
+
+
+            <p>
+
+                Delivering exceptional quality stone for homes,
+                businesses and commercial developments.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="why-grid">
+
+
+            <div class="why-card">
+
+                <i class="fa-solid fa-gem"></i>
+
+                <h3>
+                    Premium Materials
+                </h3>
+
+                <p>
+
+                    We source only premium-quality marble,
+                    granite and quartz.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="why-card">
+
+                <i class="fa-solid fa-medal"></i>
+
+                <h3>
+                    Quality Guaranteed
+                </h3>
+
+                <p>
+
+                    Every project meets high standards of
+                    durability and finishing.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="why-card">
+
+                <i class="fa-solid fa-people-group"></i>
+
+                <h3>
+                    Expert Team
+                </h3>
+
+                <p>
+
+                    Skilled craftsmen with years of experience.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="why-card">
+
+                <i class="fa-solid fa-truck-fast"></i>
+
+                <h3>
+                    Nationwide Delivery
+                </h3>
+
+                <p>
+
+                    Fast and reliable delivery throughout Ghana.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==========================================================
+     TESTIMONIALS
+========================================================== -->
+
+<section class="testimonials">
+
+    <div class="container">
+
+
+        <div class="section-title">
+
+            <h2>
+                What Our Customers Say
+            </h2>
+
+        </div>
+
+
+
+        <div class="testimonial-grid">
+
+
+            <div class="testimonial-card">
+
+                <p>
+
+                    "Excellent workmanship and outstanding
+                    customer service."
+
+                </p>
+
+                <h4>
+                    — Mr. Mensah
+                </h4>
+
+            </div>
+
+
+
+            <div class="testimonial-card">
+
+                <p>
+
+                    "Our kitchen looks amazing. Highly
+                    recommended."
+
+                </p>
+
+                <h4>
+                    — Akosua Boateng
+                </h4>
+
+            </div>
+
+
+
+            <div class="testimonial-card">
+
+                <p>
+
+                    "Professional from consultation to
+                    installation."
+
+                </p>
+
+                <h4>
+                    — Kofi Asante
+                </h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==========================================================
+     FOOTER
+========================================================== -->
+
+<footer>
+
+    <div class="container footer-container">
+
+
+        <div>
+
+            <img
+                src="images/logo.png"
+                alt="Denkyembo Logo">
+
+
+            <p>
+
+                Premium marble, granite and quartz solutions
+                for homes and businesses.
+
+            </p>
+
+        </div>
+
+
+
+        <div>
+
+            <h3>
+                Quick Links
+            </h3>
+
+
+            <a href="index.html">
+                Home
+            </a>
+
+
+            <a href="#collections">
+                Collection
+            </a>
+
+
+            <a href="project/project.html">
+                Projects
+            </a>
+
+
+            <a href="about/about.html">
+                About
+            </a>
+
+
+            <a href="contact/contact.html">
+                Contact
+            </a>
+
+
+            <a href="customerRegistration/admin-login.html">
+                Admin Login
+            </a>
+
+        </div>
+
+
+
+        <div>
+
+            <h3>
+                Contact
+            </h3>
+
+
+            <p>
+                Accra, Ghana
+            </p>
+
+
+            <p>
+                denkyembos@gmail.com
+            </p>
+
+
+            <p>
+                sales@denkyembo.com
+            </p>
+
+
+            <p>
+                +233 50 761 5936
+            </p>
+
+
+            <p>
+                +233 55 965 2740
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="copyright">
+
+        © 2026 Denkyembo Marble & Granite.
+        All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+
+<!-- ==========================================================
+     JAVASCRIPT
+========================================================== -->
+
+<script src="denkyembo.js"></script>
+
+</body>
+
+</html>

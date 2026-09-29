@@ -1,0 +1,252 @@
+/* ==========================================================
+   DENKYEMBO STONEHUB - PROFESSIONAL LOGIN (ONE-PAGE)
+========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+    background: #ffffff;
+    color: #222;
+
+}
+
+.login-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    min-height: 100vh;
+
+     align-items: stretch;
+}
+
+/* --- Left Brand Showcase Panel --- */
+.login-brand-panel {
+    min-height: 100vh;
+
+    background: linear-gradient(
+        135deg,
+        rgba(17,17,17,0.85),
+        rgba(17,17,17,0.95)
+    ), url('../images/hero.jpg');
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+
+    padding: 60px;
+
+    color: #fff;
+}
+
+.brand-content {
+    max-width: 450px;
+}
+
+.brand-badge {
+    display: inline-block;
+    background: #f04b37;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.brand-content h1 {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+
+.brand-content p {
+    color: #ccc;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.brand-features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.brand-features span {
+    font-size: 14px;
+    color: #eee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-features i {
+    color: #f04b37;
+}
+
+/* --- Right Form Panel --- */
+.login-form-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    padding: 40px;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-header {
+    margin-bottom: 30px;
+}
+
+.form-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    color: #666;
+    font-size: 14px;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+}
+
+#forgotPassword {
+    font-size: 13px;
+    color: #f04b37;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+#forgotPassword:hover {
+    opacity: 0.8;
+}
+
+.input-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-field i {
+    position: absolute;
+    left: 15px;
+    color: #999;
+    font-size: 15px;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 14px 16px 14px 45px;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    outline: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    background: #fafafa;
+    transition: all 0.3s ease;
+}
+
+.input-field input:focus {
+    border-color: #f04b37;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(240, 75, 55, 0.08);
+}
+
+.error-message {
+    color: #ff4d4d;
+    font-size: 12px;
+    min-height: 15px;
+}
+
+.submit-btn {
+    background: #f04b37;
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #d8382b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(240, 75, 55, 0.25);
+}
+
+.form-footer {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.form-footer p {
+    font-size: 13px;
+    color: #666;
+}
+
+.form-footer a {
+    color: #111;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    color: #f04b37;
+}
+
+/* --- Responsive Adaptability for Laptops/Mobile --- */
+@media (max-width: 900px) {
+    .login-wrapper {
+        grid-template-columns: 1fr;
+    }
+    .login-brand-panel {
+        display: none;
+    }
+}

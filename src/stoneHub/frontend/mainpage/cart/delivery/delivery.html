@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Delivery & Tracking | Denkyembo</title>
+
+
+    <!-- ======================================================
+         GOOGLE FONT
+    ======================================================= -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+
+    <!-- ======================================================
+         FONT AWESOME
+    ======================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+    <!-- ======================================================
+         DELIVERY CSS
+    ======================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="delivery.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================================
+     LOGO HEADER
+========================================================== -->
+
+<header class="site-header">
+
+    <div class="header-container">
+
+        <a
+            href="../../index.html"
+            class="logo"
+            aria-label="Denkyembo Marble and Granite Home">
+
+            <img
+                src="../../images/logo.png"
+                alt="Denkyembo Logo">
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ==========================================================
+     NAVIGATION
+========================================================== -->
+
+<nav class="navbar">
+
+    <div class="nav-wrapper">
+
+
+        <!-- MAIN NAVIGATION -->
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../../index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="../../index.html#collections">
+                    Collections
+                </a>
+            </li>
+
+            <li>
+                <a href="../../project/project.html">
+                    Projects
+                </a>
+            </li>
+
+            <li>
+                <a href="../../about/about.html">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="../../contact/contact.html">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+
+        <!-- NAVIGATION ACTIONS -->
+
+        <div class="nav-actions">
+
+
+            <!-- CURRENCY -->
+
+            <select
+                class="currency-switcher"
+                aria-label="Currency">
+
+                <option value="GHS">GHS</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+
+            </select>
+
+
+            <!-- ACCOUNT -->
+
+            <a
+                href="../../customerRegistration/account.html"
+                class="nav-icon account-icon"
+                aria-label="Account">
+
+                <i class="fa-regular fa-user"></i>
+
+            </a>
+
+
+            <!-- DELIVERY -->
+
+            <a
+                href="delivery.html"
+                class="nav-icon delivery-icon active"
+                aria-label="Delivery and Tracking">
+
+                <i class="fa-solid fa-truck-fast"></i>
+
+            </a>
+
+
+            <!-- CART -->
+
+            <a
+                href="../cart.html"
+                class="nav-icon cart-icon"
+                aria-label="Shopping Cart">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span class="cart-badge">
+                    0
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- ==========================================================
+     DELIVERY HERO
+========================================================== -->
+
+<section class="delivery-hero">
+
+    <div class="delivery-hero-content">
+
+        <span class="delivery-label">
+            Delivery & Tracking
+        </span>
+
+        <h1>
+            Delivery Details
+        </h1>
+
+        <p>
+            Provide your delivery information and track the status
+            of your order.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================================
+     MAIN DELIVERY PAGE
+========================================================== -->
+
+<main class="delivery-page">
+
+    <div class="delivery-container">
+
+
+        <!-- ==================================================
+             DELIVERY INFORMATION
+        =================================================== -->
+
+        <section class="delivery-card">
+
+            <h2>
+                <i class="fa-solid fa-truck-fast"></i>
+                Delivery Information
+            </h2>
+
+            <p>
+                Provide your delivery information below.
+            </p>
+
+
+            <form id="deliveryForm">
+
+
+                <!-- FULL NAME -->
+
+                <label for="deliveryName">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="deliveryName"
+                    placeholder="Enter your full name"
+                    required>
+
+
+                <!-- PHONE -->
+
+                <label for="deliveryPhone">
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="deliveryPhone"
+                    placeholder="Enter your phone number"
+                    required>
+
+
+                <!-- REGION -->
+
+                <label for="deliveryRegion">
+                    Delivery Region
+                </label>
+
+                <select
+                    id="deliveryRegion"
+                    required>
+
+                    <option value="">
+                        Select Region
+                    </option>
+
+                    <option value="Greater Accra">
+                        Greater Accra
+                    </option>
+
+                    <option value="Ashanti">
+                        Ashanti
+                    </option>
+
+                    <option value="Eastern">
+                        Eastern
+                    </option>
+
+                    <option value="Central">
+                        Central
+                    </option>
+
+                    <option value="Western">
+                        Western
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+
+                <!-- CITY -->
+
+                <label for="deliveryCity">
+                    City
+                </label>
+
+                <input
+                    type="text"
+                    id="deliveryCity"
+                    placeholder="Enter your city"
+                    required>
+
+
+                <!-- ADDRESS -->
+
+                <label for="deliveryAddress">
+                    Delivery Address
+                </label>
+
+                <textarea
+                    id="deliveryAddress"
+                    placeholder="Enter your complete delivery address"
+                    required></textarea>
+
+
+                <!-- DELIVERY METHOD -->
+
+                <label for="deliveryMethod">
+                    Delivery Method
+                </label>
+
+                <select
+                    id="deliveryMethod"
+                    required>
+
+                    <option value="">
+                        Select Delivery Method
+                    </option>
+
+                    <option value="standard">
+                        Standard Delivery
+                    </option>
+
+                    <option value="express">
+                        Express Delivery
+                    </option>
+
+                    <option value="pickup">
+                        Pickup from Denkyembo
+                    </option>
+
+                </select>
+
+
+                <!-- DELIVERY FEE -->
+
+                <div class="delivery-fee">
+
+                    <span>
+                        Estimated Delivery Fee
+                    </span>
+
+                    <strong id="deliveryFee">
+                        GHS 0.00
+                    </strong>
+
+                </div>
+
+
+                <!-- CONFIRM DELIVERY -->
+
+                <button
+                    type="submit"
+                    class="primary-btn">
+
+                    <i class="fa-solid fa-check"></i>
+
+                    Confirm Delivery
+
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- ==================================================
+             ORDER TRACKING
+        =================================================== -->
+
+        <section class="tracking-card">
+
+            <h2>
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                Track Your Order
+
+            </h2>
+
+            <p>
+                Enter your order number to check your delivery status.
+            </p>
+
+
+            <div class="tracking-search">
+
+                <input
+                    type="text"
+                    id="trackingNumber"
+                    placeholder="e.g. DEN-123456">
+
+
+                <button
+                    type="button"
+                    id="trackOrderButton">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    Track Order
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="trackingResult"
+                class="tracking-result">
+
+                <p>
+                    Enter an order number above.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             RETURN TO CART
+        =================================================== -->
+
+        <div class="return-cart">
+
+            <button
+                type="button"
+                onclick="window.location.href='../cart.html';">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Return to Cart
+
+            </button>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- ==========================================================
+     JAVASCRIPT
+========================================================== -->
+
+<script src="delivery.js"></script>
+
+</body>
+
+</html>
+

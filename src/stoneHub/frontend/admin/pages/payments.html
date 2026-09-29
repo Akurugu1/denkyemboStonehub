@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>StoneHub - Payments</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <h2>StoneHub</h2>
+
+            <span>Admin</span>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="../index.html"
+                class="nav-item"
+            >
+                <span>📊</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a
+                href="products.html"
+                class="nav-item"
+            >
+                <span>📦</span>
+                <span>Products</span>
+            </a>
+
+
+            <a
+                href="orders.html"
+                class="nav-item"
+            >
+                <span>🛒</span>
+                <span>Orders</span>
+            </a>
+
+
+            <a
+                href="customers.html"
+                class="nav-item"
+            >
+                <span>👥</span>
+                <span>Customers</span>
+            </a>
+
+
+            <a
+                href="review.html"
+                class="nav-item"
+            >
+                <span>⭐</span>
+                <span>Reviews</span>
+            </a>
+
+
+            <a
+                href="payments.html"
+                class="nav-item active"
+            >
+                <span>💳</span>
+                <span>Payments</span>
+            </a>
+
+
+            <a
+                href="reports.html"
+                class="nav-item"
+            >
+                <span>📈</span>
+                <span>Reports</span>
+            </a>
+
+
+            <a
+                href="settings.html"
+                class="nav-item"
+            >
+                <span>⚙️</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="#"
+                class="nav-item"
+            >
+                <span>🚪</span>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+             ================================================= -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button class="menu-button">
+                    ☰
+                </button>
+
+                <h1>Payments</h1>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="paymentSearch"
+                        placeholder="Search payments..."
+                    >
+
+                </div>
+
+
+                <button class="notification-button">
+                    🔔
+                </button>
+
+
+                <div id="adminProfile"></div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAYMENTS CONTENT
+             ================================================= -->
+
+        <section class="dashboard">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <h2>Payments</h2>
+
+                    <p>
+                        Monitor and manage StoneHub payments.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PAYMENT SUMMARY
+                 ================================================= -->
+
+            <div class="stats-grid">
+
+
+                <!-- TOTAL REVENUE -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        💰
+                    </div>
+
+                    <div>
+
+                        <span class="stat-label">
+                            Total Revenue
+                        </span>
+
+                        <h3 id="totalRevenue">
+                            GH₵ 0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- COMPLETED PAYMENTS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ✅
+                    </div>
+
+                    <div>
+
+                        <span class="stat-label">
+                            Paid
+                        </span>
+
+                        <h3 id="paidCount">
+                            0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PENDING PAYMENTS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ⏳
+                    </div>
+
+                    <div>
+
+                        <span class="stat-label">
+                            Pending
+                        </span>
+
+                        <h3 id="pendingCount">
+                            0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAILED PAYMENTS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ❌
+                    </div>
+
+                    <div>
+
+                        <span class="stat-label">
+                            Failed
+                        </span>
+
+                        <h3 id="failedCount">
+                            0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PAYMENT FILTERS
+                 ================================================= -->
+
+            <div class="customer-filters">
+
+                <button
+                    class="customer-filter active"
+                    data-status="All"
+                >
+                    All
+                </button>
+
+
+                <button
+                    class="customer-filter"
+                    data-status="Paid"
+                >
+                    Paid
+                </button>
+
+                <button
+                    class="customer-filter"
+                    data-status="Refunded"
+                >
+                    Refunded
+                </button>
+                <button
+                    class="customer-filter"
+                    data-status="Pending"
+                >
+                    Pending
+                </button>
+
+
+                <button
+                    class="customer-filter"
+                    data-status="Failed"
+                >
+                    Failed
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PAYMENTS TABLE
+                 ================================================= -->
+
+            <div class="dashboard-card product-card">
+
+                <div class="table-container">
+
+                    <table class="customers-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Transaction ID</th>
+
+                                <th>Customer</th>
+
+                                <th>Amount</th>
+
+                                <th>Method</th>
+
+                                <th>Date</th>
+
+                                <th>Status</th>
+
+                                <th>Action</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="paymentsTableBody">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         PAYMENT DETAILS MODAL
+         ===================================================== -->
+
+    <div
+        class="modal"
+        id="paymentModal"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h3>
+                    Payment Details
+                </h3>
+
+
+                <button
+                    class="close-modal"
+                    id="closePaymentModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div id="paymentDetails">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script src="../js/payment.js"></script>
+    <script src="../components/profile.js"></script>
+
+    <script>
+        loadAdminProfile();
+    </script>
+</body>
+
+</html>

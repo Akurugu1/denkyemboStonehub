@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>StoneHub - Reviews</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <h2>StoneHub</h2>
+
+            <span>Admin</span>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="../index.html"
+                class="nav-item"
+            >
+                <span>📊</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a
+                href="products.html"
+                class="nav-item"
+            >
+                <span>📦</span>
+                <span>Products</span>
+            </a>
+
+
+            <a
+                href="orders.html"
+                class="nav-item"
+            >
+                <span>🛒</span>
+                <span>Orders</span>
+            </a>
+
+
+            <a
+                href="customers.html"
+                class="nav-item"
+            >
+                <span>👥</span>
+                <span>Customers</span>
+            </a>
+
+
+            <a
+                href="reviews.html"
+                class="nav-item active"
+            >
+                <span>⭐</span>
+                <span>Reviews</span>
+            </a>
+
+
+            <a
+                href="payments.html"
+                class="nav-item"
+            >
+                <span>💳</span>
+                <span>Payments</span>
+            </a>
+
+
+            <a
+                href="reports.html"
+                class="nav-item"
+            >
+                <span>📈</span>
+                <span>Reports</span>
+            </a>
+
+
+            <a
+                href="settings.html"
+                class="nav-item"
+            >
+                <span>⚙️</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="#"
+                class="nav-item"
+            >
+                <span>🚪</span>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button class="menu-button">
+                    ☰
+                </button>
+
+                <h1>Reviews</h1>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="reviewSearch"
+                        placeholder="Search reviews..."
+                    >
+
+                </div>
+
+
+                <button class="notification-button">
+                    🔔
+                </button>
+
+
+                <div id="adminProfile"></div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             REVIEWS CONTENT
+             ================================================= -->
+
+        <section class="dashboard">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <h2>Customer Reviews</h2>
+
+                    <p>
+                        View and manage customer reviews.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 REVIEW SUMMARY
+                 ================================================= -->
+
+            <div class="stats-grid">
+
+
+                <!-- AVERAGE RATING -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ⭐
+                    </div>
+
+                    <div>
+
+                        <span class="stat-label">
+                            Average Rating
+                        </span>
+
+                        <h3 id="averageRating">
+                            0 / 5
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TOTAL REVIEWS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        💬
+                    </div>
+
+                    <div>
+
+                        <span class="stat-label">
+                            Total Reviews
+                        </span>
+
+                        <h3 id="totalReviews">
+                            0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- POSITIVE REVIEWS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        👍
+                    </div>
+
+                    <div>
+
+                        <span class="stat-label">
+                            Positive Reviews
+                        </span>
+
+                        <h3 id="positiveReviews">
+                            0%
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PENDING REVIEWS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ⏳
+                    </div>
+
+                    <div>
+
+                        <span class="stat-label">
+                            Pending Reviews
+                        </span>
+
+                        <h3 id="pendingReviews">
+                            0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 REVIEW FILTERS
+                 ================================================= -->
+
+            <div class="customer-filters">
+
+                <button
+                    class="customer-filter active"
+                    data-status="All"
+                >
+                    All
+                </button>
+
+
+                <button
+                    class="customer-filter"
+                    data-status="Published"
+                >
+                    Published
+                </button>
+
+
+                <button
+                    class="customer-filter"
+                    data-status="Pending"
+                >
+                    Pending
+                </button>
+
+
+                <button
+                    class="customer-filter"
+                    data-status="Flagged"
+                >
+                    Flagged
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 REVIEWS TABLE
+                 ================================================= -->
+
+            <div class="dashboard-card product-card">
+
+                <div class="table-container">
+
+                    <table class="customers-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Customer</th>
+
+                                <th>Rating</th>
+
+                                <th>Review</th>
+
+                                <th>Date</th>
+
+                                <th>Status</th>
+
+                                <th>Action</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="reviewsTableBody">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         REVIEW DETAILS MODAL
+         ===================================================== -->
+
+    <div
+        class="modal"
+        id="reviewModal"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h3>
+                    Review Details
+                </h3>
+
+
+                <button
+                    class="close-modal"
+                    id="closeReviewModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div id="reviewDetails">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script src="../js/review.js"></script>
+    <script src="../components/profile.js"></script>
+
+    <script>
+        loadAdminProfile();
+    </script>
+
+</body>
+
+</html>

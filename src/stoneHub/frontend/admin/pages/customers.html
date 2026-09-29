@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>StoneHub - Customers</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <h2>StoneHub</h2>
+
+            <span>Admin</span>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="../index.html"
+                class="nav-item"
+            >
+                <span>📊</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a
+                href="products.html"
+                class="nav-item"
+            >
+                <span>📦</span>
+                <span>Products</span>
+            </a>
+
+
+            <a
+                href="orders.html"
+                class="nav-item"
+            >
+                <span>🛒</span>
+                <span>Orders</span>
+            </a>
+
+
+            <a
+                href="customers.html"
+                class="nav-item active"
+            >
+                <span>👥</span>
+                <span>Customers</span>
+            </a>
+
+
+            <a
+                href="review.html"
+                class="nav-item"
+            >
+                <span>⭐</span>
+                <span>Reviews</span>
+            </a>
+
+
+            <a
+                href="payments.html"
+                class="nav-item"
+            >
+                <span>💳</span>
+                <span>Payments</span>
+            </a>
+
+
+            <a
+                href="reports.html"
+                class="nav-item"
+            >
+                <span>📈</span>
+                <span>Reports</span>
+            </a>
+
+
+            <a
+                href="settings.html"
+                class="nav-item"
+            >
+                <span>⚙️</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="#"
+                class="nav-item"
+            >
+                <span>🚪</span>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button class="menu-button">
+                    ☰
+                </button>
+
+                <h1>Customers</h1>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="customerSearch"
+                        placeholder="Search customers..."
+                    >
+
+                </div>
+
+
+                <button class="notification-button">
+                    🔔
+                </button>
+
+                <div id="adminProfile"></div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             CUSTOMERS CONTENT
+             ================================================= -->
+
+        <section class="dashboard">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <h2>Customers</h2>
+
+                    <p>
+                        Manage your StoneHub customers.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CUSTOMER FILTERS -->
+
+            <div class="customer-filters">
+
+                <button
+                    class="customer-filter active"
+                    data-status="All"
+                >
+                    All
+                </button>
+
+
+                <button
+                    class="customer-filter"
+                    data-status="Active"
+                >
+                    Active
+                </button>
+
+
+                <button
+                    class="customer-filter"
+                    data-status="Inactive"
+                >
+                    Inactive
+                </button>
+
+            </div>
+
+
+
+            <!-- CUSTOMER TABLE -->
+
+            <div class="dashboard-card product-card">
+
+                <div class="table-container">
+
+                    <table class="customers-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Customer</th>
+
+                                <th>Email</th>
+
+                                <th>Phone</th>
+
+                                <th>Orders</th>
+
+                                <th>Total Spent</th>
+
+                                <th>Status</th>
+
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="customersTableBody">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         CUSTOMER DETAILS MODAL
+         ===================================================== -->
+
+    <div
+        class="modal"
+        id="customerModal"
+    >
+
+        <div class="modal-content customer-modal">
+
+
+            <div class="modal-header">
+
+                <h3>
+                    Customer Details
+                </h3>
+
+
+                <button
+                    class="close-modal"
+                    id="closeCustomerModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div id="customerDetails">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         EDIT CUSTOMER MODAL
+         ===================================================== -->
+
+    <div
+        class="modal"
+        id="editCustomerModal"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h3>
+                    Edit Customer
+                </h3>
+
+
+                <button
+                    class="close-modal"
+                    id="closeEditCustomerModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="customerForm">
+
+
+                <div class="form-group">
+
+                    <label for="customerName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="customerEmail">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="customerEmail"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="customerPhone">
+                        Phone
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="customerPhone"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="customerStatus">
+                        Status
+                    </label>
+
+                    <select id="customerStatus">
+
+                        <option value="Active">
+                            Active
+                        </option>
+
+                        <option value="Inactive">
+                            Inactive
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="cancelCustomerEdit"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Save Changes
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="../js/app.js"></script>
+    <script src="../components/profile.js"></script>
+    <script src="../js/customers.js"></script>
+
+    <script>
+        loadAdminProfile();
+    </script>
+</body>
+
+</html>

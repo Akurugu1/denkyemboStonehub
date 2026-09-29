@@ -1,0 +1,613 @@
+/* ==========================================================
+   DENKYEMBO MARBLE & GRANITE
+   PROJECTS PAGE
+========================================================== */
+
+
+/* ==========================================================
+   RESET
+========================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    font-family: 'Outfit', sans-serif;
+    background: #ffffff;
+    color: #222222;
+    line-height: 1.6;
+}
+
+
+/* ==========================================================
+   VARIABLES
+========================================================== */
+
+:root {
+    --primary: #F24234;
+    --primary-dark: #d8382b;
+    --black: #111111;
+    --gray: #666666;
+    --light: #f7f7f7;
+    --white: #ffffff;
+}
+
+
+/* ==========================================================
+   SHARED LABELS
+========================================================== */
+
+.project-label,
+.section-label {
+    display: inline-block;
+    color: #f04b37;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+}
+
+
+/* ==========================================================
+   HERO
+========================================================== */
+
+.project-hero {
+    width: 100%;
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 70px 30px;
+    text-align: center;
+    background:
+        linear-gradient(
+            135deg,
+            #f5f3ef 0%,
+            #ebe7e1 50%,
+            #f7f5f2 100%
+        );
+    border-bottom: 1px solid #dedad4;
+}
+
+.project-hero::before {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    left: -90px;
+    top: -80px;
+    border: 1px solid rgba(17, 17, 17, 0.07);
+    border-radius: 50%;
+}
+
+.project-hero::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: -70px;
+    bottom: -80px;
+    border: 1px solid rgba(240, 75, 55, 0.12);
+    transform: rotate(45deg);
+}
+
+.project-hero-content {
+    max-width: 760px;
+    position: relative;
+    z-index: 2;
+}
+
+.project-hero .project-label {
+    margin-bottom: 20px;
+}
+
+.project-hero h1 {
+    margin-bottom: 20px;
+    color: #111111;
+    font-size: clamp(42px, 5vw, 64px);
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -2.5px;
+}
+
+.project-hero p {
+    max-width: 620px;
+    margin: auto;
+    color: #666666;
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+
+/* ==========================================================
+   INTRO
+========================================================== */
+
+.project-intro {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 90px 40px;
+    display: grid;
+    grid-template-columns: 70px 0.9fr 1.1fr;
+    gap: 45px;
+    border-bottom: 1px solid #e7e4df;
+}
+
+.intro-number {
+    padding-top: 5px;
+    color: #f04b37;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.intro-heading h2 {
+    margin-top: 16px;
+    font-size: 42px;
+    line-height: 1.05;
+    font-weight: 600;
+    letter-spacing: -1.8px;
+}
+
+.intro-text {
+    padding-top: 5px;
+}
+
+.intro-text p {
+    margin-bottom: 20px;
+    color: #666666;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.intro-text p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================================
+   PROJECT CONTAINER
+========================================================== */
+
+.projects-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+
+/* ==========================================================
+   PROJECT ROW
+========================================================== */
+
+.project-row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 90px;
+    padding: 95px 40px;
+    border-bottom: 1px solid #e7e4df;
+}
+
+
+/* ==========================================================
+   PROJECT IMAGE FRAME
+========================================================== */
+
+.project-image-frame {
+    width: 100%;
+    position: relative;
+    padding: 13px;
+    background: #f4f1ed;
+    border: 1px solid #ded9d2;
+    box-shadow: 8px 8px 0 rgba(240, 75, 55, 0.10);
+}
+
+.project-image {
+    width: 100%;
+    height: 330px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #ebe8e3;
+    border: 1px solid #e2ded8;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+    transition: transform 0.4s ease;
+}
+
+.project-image-frame:hover .project-image img {
+    transform: scale(1.02);
+}
+
+
+/* ==========================================================
+   IMAGE NUMBER
+========================================================== */
+
+.image-number {
+    position: absolute;
+    left: -12px;
+    top: 25px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f04b37;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 50%;
+}
+
+
+/* ==========================================================
+   PROJECT CONTENT
+========================================================== */
+
+.project-content {
+    max-width: 470px;
+}
+
+.project-content h2 {
+    margin: 16px 0 25px;
+    font-size: 46px;
+    line-height: 1.02;
+    font-weight: 600;
+    letter-spacing: -2px;
+}
+
+.project-content p {
+    margin-bottom: 25px;
+    color: #666666;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+
+/* ==========================================================
+   PROJECT DETAILS
+========================================================== */
+
+.project-detail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.project-detail span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 12px;
+    background: #f6f4f1;
+    border: 1px solid #e5e1db;
+    color: #444444;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.project-detail i {
+    color: #f04b37;
+    font-size: 10px;
+}
+
+
+/* ==========================================================
+   OTHER SERVICES
+========================================================== */
+
+.other-services {
+    width: 100%;
+    background:
+        linear-gradient(
+            135deg,
+            #f5f3ef,
+            #eeeae5
+        );
+    border-top: 1px solid #e2ded8;
+    border-bottom: 1px solid #dedad4;
+}
+
+.other-services-inner {
+    max-width: 1100px;
+    margin: auto;
+    padding: 85px 40px;
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 90px;
+}
+
+.other-services-heading h2 {
+    margin-top: 16px;
+    font-size: 42px;
+    line-height: 1.05;
+    font-weight: 600;
+    letter-spacing: -1.8px;
+}
+
+.other-services-heading p {
+    max-width: 360px;
+    margin-top: 22px;
+    color: #666666;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* ==========================================================
+   SERVICES
+========================================================== */
+
+.service-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid #d6d1ca;
+}
+
+.service-item {
+    display: grid;
+    grid-template-columns: 35px 1fr;
+    gap: 12px;
+    padding: 24px 15px 24px 0;
+    border-bottom: 1px solid #d6d1ca;
+}
+
+.service-number {
+    color: #f04b37;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.service-item h3 {
+    margin-bottom: 7px;
+    color: #222222;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.service-item p {
+    color: #707070;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* ==========================================================
+   CTA
+========================================================== */
+
+.project-cta {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    padding: 75px 30px 80px;
+    text-align: center;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.cta-decoration {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    top: -100px;
+    left: -70px;
+    border: 1px solid rgba(240, 75, 55, 0.12);
+    border-radius: 50%;
+}
+
+.project-cta h2 {
+    margin: 16px 0 18px;
+    color: #111111;
+    font-size: 46px;
+    line-height: 1.05;
+    font-weight: 600;
+    letter-spacing: -2px;
+}
+
+.project-cta p {
+    max-width: 500px;
+    margin: 0 auto 25px;
+    color: #666666;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.quote-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 20px;
+    background: #f04b37;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.quote-button:hover {
+    background: #111111;
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+.project-footer {
+    width: 100%;
+    padding: 25px 30px;
+    text-align: center;
+    background: #ffffff;
+}
+
+.project-footer p {
+    color: #777777;
+    font-size: 12px;
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 1100px) {
+
+    .project-row {
+        gap: 50px;
+        padding: 75px 30px;
+    }
+
+    .project-image {
+        height: 290px;
+    }
+
+    .project-content h2 {
+        font-size: 38px;
+    }
+
+    .project-intro {
+        grid-template-columns: 50px 1fr 1.4fr;
+        gap: 25px;
+        padding: 75px 30px;
+    }
+
+    .other-services-inner {
+        gap: 50px;
+        padding: 75px 30px;
+    }
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .project-hero {
+        min-height: 310px;
+        padding: 55px 25px;
+    }
+
+    .project-hero h1 {
+        font-size: 42px;
+        letter-spacing: -1.8px;
+    }
+
+    .project-hero p {
+        font-size: 14px;
+    }
+
+    .project-intro {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 65px 25px;
+    }
+
+    .intro-number {
+        display: none;
+    }
+
+    .intro-heading h2 {
+        font-size: 38px;
+    }
+
+    .project-row {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 65px 25px;
+    }
+
+    .supply-row .project-content {
+        order: 1;
+    }
+
+    .supply-row .project-image-frame {
+        order: 2;
+    }
+
+    .project-image {
+        height: auto;
+        min-height: 240px;
+    }
+
+    .project-image img {
+        height: auto;
+        max-height: 360px;
+        object-fit: contain;
+    }
+
+    .project-content h2 {
+        font-size: 38px;
+        letter-spacing: -1.5px;
+    }
+
+    .project-content p {
+        font-size: 14px;
+    }
+
+    .other-services-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 65px 25px;
+    }
+
+    .other-services-heading h2 {
+        font-size: 38px;
+    }
+
+    .service-list {
+        grid-template-columns: 1fr;
+    }
+
+    .project-cta {
+        padding: 60px 25px 70px;
+    }
+
+    .project-cta h2 {
+        font-size: 38px;
+    }
+}
+
+
+/* ==========================================================
+   SMALL MOBILE
+========================================================== */
+
+@media (max-width: 480px) {
+
+    .project-hero h1 {
+        font-size: 36px;
+    }
+
+    .project-content h2 {
+        font-size: 34px;
+    }
+}

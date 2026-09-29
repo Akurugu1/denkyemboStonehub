@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Product Catalogue | Denkyembo StoneHub</title>
+
+
+    <!-- ======================================================
+         GOOGLE FONT
+    ======================================================= -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+
+    <!-- ======================================================
+         FONT AWESOME
+    ======================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+    <!-- ======================================================
+         CATALOGUE CSS
+    ======================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="catalogue.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================================
+     LOGO HEADER
+========================================================== -->
+
+<header class="site-header">
+
+    <div class="header-container">
+
+        <a
+            href="../index.html"
+            class="logo"
+            aria-label="Denkyembo Marble and Granite Home">
+
+            <img
+                src="../images/logo.png"
+                alt="Denkyembo Logo">
+
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- ==========================================================
+     STICKY NAVIGATION BAR
+========================================================== -->
+
+<nav class="navbar">
+
+    <div class="nav-wrapper">
+
+
+        <!-- ==================================================
+             MAIN NAVIGATION LINKS
+        =================================================== -->
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="../index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="../index.html#collections"
+                    class="active">
+                    Collections
+                </a>
+            </li>
+
+            <li>
+                <a href="../project/project.html">
+                    Projects
+                </a>
+            </li>
+
+            <li>
+                <a href="../about/about.html">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="../contact/contact.html">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+
+
+        <!-- ==================================================
+             NAVIGATION ACTIONS
+        =================================================== -->
+
+        <div class="nav-actions">
+
+
+            <!-- ==================================================
+                 CURRENCY
+            =================================================== -->
+
+            <select
+                class="currency-switcher"
+                aria-label="Currency">
+
+                <option value="GHS">
+                    GHS
+                </option>
+
+                <option value="USD">
+                    USD
+                </option>
+
+                <option value="EUR">
+                    EUR
+                </option>
+
+            </select>
+
+
+
+            <!-- ==================================================
+                 ACCOUNT
+            =================================================== -->
+
+            <a
+                href="../customerRegistration/account.html"
+                class="nav-icon account-icon"
+                aria-label="Account">
+
+                <i class="fa-regular fa-user"></i>
+
+            </a>
+
+
+
+            <!-- ==================================================
+                 DELIVERY
+                 SAME ICON AS MAIN PAGE
+            =================================================== -->
+
+            <a
+                href="../cart/delivery/delivery.html"
+                class="nav-icon delivery-icon"
+                aria-label="Delivery and Tracking">
+
+                <i class="fa-solid fa-truck-fast"></i>
+
+            </a>
+
+
+
+            <!-- ==================================================
+                 CART
+            =================================================== -->
+
+            <a
+                href="../cart/cart.html"
+                class="nav-icon cart-icon"
+                aria-label="Shopping Cart">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span class="cart-badge">
+                    0
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ==========================================================
+     CATALOGUE HERO
+========================================================== -->
+
+<section class="catalogue-hero">
+
+    <div class="catalogue-hero-content">
+
+        <span class="catalogue-badge">
+            Our Collections
+        </span>
+
+        <h1>
+            Explore Our Stone Catalogue
+        </h1>
+
+        <p>
+            Discover premium marble, granite, quartz and
+            other natural stone products for your next project.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==========================================================
+     MAIN CATALOGUE
+========================================================== -->
+
+<main class="catalogue-main">
+
+
+    <!-- ======================================================
+         CATALOGUE HEADING
+    ======================================================= -->
+
+    <div class="catalogue-heading">
+
+        <div>
+
+            <h2>
+                Stone Collections
+            </h2>
+
+            <p>
+                Browse our available stone products.
+            </p>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             SEARCH
+        =================================================== -->
+
+        <div class="catalogue-search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="productSearch"
+                placeholder="Search products..."
+                aria-label="Search products">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ======================================================
+         CATEGORY FILTERS
+    ======================================================= -->
+
+    <div class="category-filters">
+
+        <button
+            type="button"
+            class="category-btn active"
+            data-category="all">
+
+            All Products
+
+        </button>
+
+
+        <button
+            type="button"
+            class="category-btn"
+            data-category="marble">
+
+            Marble
+
+        </button>
+
+
+        <button
+            type="button"
+            class="category-btn"
+            data-category="granite">
+
+            Granite
+
+        </button>
+
+
+        <button
+            type="button"
+            class="category-btn"
+            data-category="quartz">
+
+            Quartz
+
+        </button>
+
+    </div>
+
+
+
+    <!-- ======================================================
+         PRODUCT GRID
+    ======================================================= -->
+
+    <section
+        id="productGrid"
+        class="product-grid">
+
+        <!-- Products loaded by catalogue.js -->
+
+    </section>
+
+
+
+    <!-- ======================================================
+         LOADING MESSAGE
+    ======================================================= -->
+
+    <div
+        id="loadingMessage"
+        class="catalogue-message">
+
+        <i class="fa-solid fa-spinner fa-spin"></i>
+
+        <p>
+            Loading products...
+        </p>
+
+    </div>
+
+
+
+    <!-- ======================================================
+         ERROR MESSAGE
+    ======================================================= -->
+
+    <div
+        id="errorMessage"
+        class="catalogue-message hidden">
+
+        <i class="fa-solid fa-circle-exclamation"></i>
+
+        <p>
+            Unable to load products.
+        </p>
+
+    </div>
+
+</main>
+
+
+
+<!-- ==========================================================
+     FOOTER
+========================================================== -->
+
+<footer class="catalogue-footer">
+
+    <div class="container">
+
+        <p>
+            © 2026 Denkyembo StoneHub. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- ==========================================================
+     JAVASCRIPT
+========================================================== -->
+
+<script src="catalogue.js"></script>
+
+
+</body>
+
+</html>

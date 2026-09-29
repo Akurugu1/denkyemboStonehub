@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>StoneHub - Reports</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <h2>StoneHub</h2>
+
+            <span>Admin</span>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="../index.html"
+                class="nav-item"
+            >
+                <span>📊</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a
+                href="products.html"
+                class="nav-item"
+            >
+                <span>📦</span>
+                <span>Products</span>
+            </a>
+
+
+            <a
+                href="orders.html"
+                class="nav-item"
+            >
+                <span>🛒</span>
+                <span>Orders</span>
+            </a>
+
+
+            <a
+                href="customers.html"
+                class="nav-item"
+            >
+                <span>👥</span>
+                <span>Customers</span>
+            </a>
+
+
+            <a
+                href="review.html"
+                class="nav-item"
+            >
+                <span>⭐</span>
+                <span>Reviews</span>
+            </a>
+
+
+            <a
+                href="payments.html"
+                class="nav-item"
+            >
+                <span>💳</span>
+                <span>Payments</span>
+            </a>
+
+
+            <a
+                href="reports.html"
+                class="nav-item active"
+            >
+                <span>📈</span>
+                <span>Reports</span>
+            </a>
+
+
+            <a
+                href="settings.html"
+                class="nav-item"
+            >
+                <span>⚙️</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="#"
+                class="nav-item"
+            >
+                <span>🚪</span>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+             ================================================= -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button class="menu-button">
+                    ☰
+                </button>
+
+                <h1>Reports</h1>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="reportSearch"
+                        placeholder="Search reports..."
+                    >
+
+                </div>
+
+
+                <button class="notification-button">
+                    🔔
+                </button>
+
+
+                <div id="adminProfile"></div>
+
+                    
+                        
+                    
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             REPORT CONTENT
+             ================================================= -->
+
+        <section class="dashboard">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <h2>Business Reports</h2>
+
+                    <p>
+                        Monitor StoneHub business performance.
+                    </p>
+
+                </div>
+
+
+                <div class="report-controls">
+
+                    <select id="reportPeriod">
+
+                        <option value="7">
+                            Last 7 Days
+                        </option>
+
+                        <option value="30" selected>
+                            Last 30 Days
+                        </option>
+
+                        <option value="90">
+                            Last 90 Days
+                        </option>
+
+                        <option value="365">
+                            This Year
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 REPORT SUMMARY
+                 ================================================= -->
+
+            <div class="stats-grid">
+
+
+                <!-- REVENUE -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        💰
+                    </div>
+
+                    <div>
+
+                        <span class="stat-label">
+                            Total Revenue
+                        </span>
+
+                        <h3 id="totalRevenue">
+                            GH₵ 48,650
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ORDERS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🛒
+                    </div>
+
+                    <div>
+
+                        <span class="stat-label">
+                            Total Orders
+                        </span>
+
+                        <h3 id="totalOrders">
+                            206
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CUSTOMERS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        👥
+                    </div>
+
+                    <div>
+
+                        <span class="stat-label">
+                            Customers
+                        </span>
+
+                        <h3 id="totalCustomers">
+                            142
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- AVERAGE ORDER -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📊
+                    </div>
+
+                    <div>
+
+                        <span class="stat-label">
+                            Average Order
+                        </span>
+
+                        <h3 id="averageOrder">
+                            GH₵ 236
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SALES OVERVIEW
+                 ================================================= -->
+
+            <div class="dashboard-card report-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Sales Overview
+                        </h3>
+
+                        <p>
+                            Revenue over time.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="report-chart"
+                    id="salesChart"
+                >
+
+                    <div class="report-chart" id="salesChart">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 REPORT GRID
+                 ================================================= -->
+
+            <div class="reports-grid">
+
+
+                <!-- TOP PRODUCTS -->
+
+                <div class="dashboard-card report-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
+                                Top Products
+                            </h3>
+
+                            <p>
+                                Best performing products.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="report-list"
+                        id="topProducts"
+                    >
+                    </div>
+
+                </div>
+
+
+
+                <!-- ORDER STATUS -->
+
+                <div class="dashboard-card report-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
+                                Order Status
+                            </h3>
+
+                            <p>
+                                Current order breakdown.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="report-list"
+                        id="orderStatus"
+                    >
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CUSTOMER OVERVIEW
+                 ================================================= -->
+
+            <div class="dashboard-card report-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Customer Overview
+                        </h3>
+
+                        <p>
+                            Customer activity for the selected period.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="customer-report-grid">
+
+                    <div>
+
+                        <span>
+                            New Customers
+                        </span>
+
+                        <strong id="newCustomers">
+                            28
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Returning Customers
+                        </span>
+
+                        <strong id="returningCustomers">
+                            64
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Active Customers
+                        </span>
+
+                        <strong id="activeCustomers">
+                            118
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Inactive Customers
+                        </span>
+
+                        <strong id="inactiveCustomers">
+                            24
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script src="../js/report.js"></script>
+    <script src="../components/profile.js"></script>
+
+    <script>
+        loadAdminProfile();
+    </script>
+
+</body>
+
+</html>
