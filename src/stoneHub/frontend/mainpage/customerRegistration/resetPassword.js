@@ -62,7 +62,7 @@ resetPasswordForm.addEventListener(
         try {
 
             const response = await fetch(
-                "http://localhost:5000/api/auth/reset-password",
+                "https://stonehub-backend-service.onrender.com/api/auth/reset-password",
                 {
                     method: "POST",
 
@@ -117,3 +117,4 @@ resetPasswordForm.addEventListener(
         }
     }
 );
+

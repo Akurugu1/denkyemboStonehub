@@ -84,7 +84,7 @@ if (notificationButton) {
 // =========================================================
 
 const API_URL =
-    "http://localhost:5000/api/admin/dashboard";
+    "https://stonehub-backend-service.onrender.com/api/admin/dashboard";
 
 
 // =========================================================

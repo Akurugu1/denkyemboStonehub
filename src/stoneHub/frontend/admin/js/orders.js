@@ -33,7 +33,7 @@ async function loadOrders() {
 
         const response =
             await fetch(
-                "http://localhost:5000/api/orders",
+                "https://stonehub-backend-service.onrender.com/api/orders",
                 {
                     method: "GET",
 
@@ -375,7 +375,7 @@ async function changeOrderStatus(
 
         const response =
             await fetch(
-                `http://localhost:5000/api/orders/status/${numericOrderId}`,
+                `https://stonehub-backend-service.onrender.com/api/orders/status/${numericOrderId}`,
                 {
                     method: "PUT",
 
@@ -486,7 +486,7 @@ async function viewOrder(
 
         const response =
             await fetch(
-                `http://localhost:5000/api/orders/${numericOrderId}`,
+                `https://stonehub-backend-service.onrender.com/api/orders/${numericOrderId}`,
                 {
                     method: "GET",
 

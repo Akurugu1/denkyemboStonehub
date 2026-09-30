@@ -17,7 +17,7 @@ loginForm.addEventListener("submit", async (event) => {
 
         // Send the admin's credentials to the backend
         const response = await fetch(
-            "http://localhost:5000/api/admin/login",
+            "https://stonehub-backend-service.onrender.com/api/admin/login",
             {
                 method: "POST",
 

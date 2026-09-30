@@ -71,7 +71,7 @@ async function updateSummary(period) {
         // Get summary data
 
         const summaryResponse = await fetch(
-            `http://localhost:5000/api/admin/reports/summary?days=${period}`
+            `https://stonehub-backend-service.onrender.com/api/admin/reports/summary?days=${period}`
         );
 
 
@@ -91,7 +91,7 @@ async function updateSummary(period) {
         // Get customer overview data
 
         const customerResponse = await fetch(
-            `http://localhost:5000/api/admin/reports/customers?days=${period}`
+            `https://stonehub-backend-service.onrender.com/api/admin/reports/customers?days=${period}`
         );
 
 
@@ -164,13 +164,13 @@ async function updateSummary(period) {
                 // Get order status data
 
         const orderStatusResponse = await fetch(
-            `http://localhost:5000/api/admin/reports/orders/status?days=${period}`
+            `https://stonehub-backend-service.onrender.com/api/admin/reports/orders/status?days=${period}`
         );
 
                 // Get top products
 
         const topProductsResponse = await fetch(
-            `http://localhost:5000/api/admin/reports/products/top?days=${period}`
+            `https://stonehub-backend-service.onrender.com/api/admin/reports/products/top?days=${period}`
         );
 
 
@@ -192,7 +192,7 @@ async function updateSummary(period) {
                 // Get sales overview data
 
         const salesResponse = await fetch(
-            `http://localhost:5000/api/admin/reports/sales?days=${period}`
+            `https://stonehub-backend-service.onrender.com/api/admin/reports/sales?days=${period}`
         );
 
 
@@ -488,6 +488,7 @@ function displaySalesChart() {
 
 
 displaySalesChart();
+
 
 
 

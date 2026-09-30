@@ -828,7 +828,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const response =
                 await fetch(
-                    "http://localhost:5000/api/products"
+                    "https://stonehub-backend-service.onrender.com/api/products"
                 );
 
 
@@ -889,7 +889,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     } else {
 
                         imageUrl =
-                            `http://localhost:5000${product.image_url}`;
+                            `https://stonehub-backend-service.onrender.com${product.image_url}`;
 
                     }
 

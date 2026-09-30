@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ====================================================== */
 
     const API_URL =
-        "http://localhost:5000/api/cart";
+        "https://stonehub-backend-service.onrender.com/api/cart";
 
 
     /* ======================================================
@@ -649,7 +649,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     } else {
 
                         imagePath =
-                            `http://localhost:5000${item.image_url}`;
+                            `https://stonehub-backend-service.onrender.com${item.image_url}`;
 
                     }
 

@@ -1,4 +1,4 @@
-﻿"use strict";
+"use strict";
 
 /* =====================================================
    DENKYEMBO DELIVERY & ORDER
@@ -53,10 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
     ===================================================== */
 
     const ORDERS_API =
-        "http://localhost:5000/api/orders";
+        "https://stonehub-backend-service.onrender.com/api/orders";
 
     const CART_API =
-        "http://localhost:5000/api/cart";
+        "https://stonehub-backend-service.onrender.com/api/cart";
 
 
     /* =====================================================
@@ -940,3 +940,4 @@ document.addEventListener("DOMContentLoaded", () => {
     checkCart();
 
 });
+

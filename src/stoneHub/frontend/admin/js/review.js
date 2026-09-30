@@ -155,7 +155,7 @@ async function loadReviews() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/admin/reviews"
+            "https://stonehub-backend-service.onrender.com/api/admin/reviews"
         );
 
 
@@ -527,7 +527,7 @@ tableBody.addEventListener(
             try {
 
                 const response = await fetch(
-                    `http://localhost:5000/api/admin/reviews/${reviewId}/status`,
+                    `https://stonehub-backend-service.onrender.com/api/admin/reviews/${reviewId}/status`,
                     {
                         method: "PUT",
 
@@ -592,7 +592,7 @@ tableBody.addEventListener(
             try {
 
                 const response = await fetch(
-                    `http://localhost:5000/api/admin/reviews/${reviewId}/status`,
+                    `https://stonehub-backend-service.onrender.com/api/admin/reviews/${reviewId}/status`,
                     {
                         method: "PUT",
 
@@ -668,7 +668,7 @@ tableBody.addEventListener(
             try {
 
                 const response = await fetch(
-                    `http://localhost:5000/api/admin/reviews/${reviewId}`,
+                    `https://stonehub-backend-service.onrender.com/api/admin/reviews/${reviewId}`,
                     {
                         method: "DELETE"
                     }

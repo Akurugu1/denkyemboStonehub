@@ -68,7 +68,7 @@ async function loadCustomers() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/admin/customers"
+            "https://stonehub-backend-service.onrender.com/api/admin/customers"
         );
 
 
@@ -639,7 +639,7 @@ customerForm.addEventListener(
         try {
 
             const response = await fetch(
-                `http://localhost:5000/api/admin/customers/${editingCustomerId}`,
+                `https://stonehub-backend-service.onrender.com/api/admin/customers/${editingCustomerId}`,
                 {
                     method: "PUT",
 
@@ -739,7 +739,7 @@ async function deleteCustomer(id) {
     try {
 
         const response = await fetch(
-            `http://localhost:5000/api/admin/customers/${id}`,
+            `https://stonehub-backend-service.onrender.com/api/admin/customers/${id}`,
             {
                 method: "DELETE"
             }

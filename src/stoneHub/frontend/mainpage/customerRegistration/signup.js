@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const response = await fetch(
 
-                "http://localhost:5000/api/auth/register",
+                "https://stonehub-backend-service.onrender.com/api/auth/register",
 
                 {
 

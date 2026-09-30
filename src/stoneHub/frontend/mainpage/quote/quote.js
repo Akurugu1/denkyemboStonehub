@@ -53,7 +53,7 @@ async function loadQuoteProduct() {
 
         const response =
             await fetch(
-                `http://localhost:5000/api/products/${productId}`
+                `https://stonehub-backend-service.onrender.com/api/products/${productId}`
             );
 
 
@@ -319,7 +319,7 @@ function setupQuoteForm() {
 
                 const response =
                     await fetch(
-                        "http://localhost:5000/api/quotes",
+                        "https://stonehub-backend-service.onrender.com/api/quotes",
                         {
                             method: "POST",
 

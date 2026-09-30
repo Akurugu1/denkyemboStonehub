@@ -6,7 +6,7 @@
    API
 ========================================================== */
 
-const API_URL = "http://localhost:5000/api/products";
+const API_URL = "https://stonehub-backend-service.onrender.com/api/products";
 
 /* ==========================================================
    IMAGE PATH
@@ -298,7 +298,7 @@ async function updateCartBadge() {
 
         const response =
             await fetch(
-                "http://localhost:5000/api/cart",
+                "https://stonehub-backend-service.onrender.com/api/cart",
                 {
                     method: "GET",
 
@@ -492,7 +492,7 @@ function displayProducts(products) {
             ? (
                 product.image_url.startsWith("http")
                     ? product.image_url
-                    : `http://localhost:5000${product.image_url}`
+                    : `https://stonehub-backend-service.onrender.com${product.image_url}`
             )
             : "../images/placeholder.jpg";
 
@@ -617,7 +617,7 @@ async function viewProductDetails(productId) {
                     ? (
                         product.image_url.startsWith("http")
                             ? product.image_url
-                            : `http://localhost:5000${product.image_url}`
+                            : `https://stonehub-backend-service.onrender.com${product.image_url}`
                     )
                     : "../images/placeholder.jpg";
 
@@ -1008,7 +1008,7 @@ async function addProductToCart(productId) {
 
         const response =
             await fetch(
-                "http://localhost:5000/api/cart/add",
+                "https://stonehub-backend-service.onrender.com/api/cart/add",
                 {
                     method: "POST",
 
@@ -1424,3 +1424,4 @@ async function startCatalogue() {
 
 
 startCatalogue();
+

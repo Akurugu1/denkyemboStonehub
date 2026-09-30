@@ -274,7 +274,7 @@ async function loadAdminProfile() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/admin/profile",
+            "https://stonehub-backend-service.onrender.com/api/admin/profile",
             {
                 method: "GET",
 

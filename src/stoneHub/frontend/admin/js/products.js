@@ -25,7 +25,7 @@ async function loadProducts() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/admin/products"
+            "https://stonehub-backend-service.onrender.com/api/admin/products"
         );
 
         if (!response.ok) {
@@ -573,7 +573,7 @@ productForm.addEventListener(
 
                 const response =
                     await fetch(
-                        `http://localhost:5000/api/admin/products/${editingProductId}`,
+                        `https://stonehub-backend-service.onrender.com/api/admin/products/${editingProductId}`,
                         {
                             method: "PUT",
                             body: formData
@@ -656,7 +656,7 @@ productForm.addEventListener(
 
             const response =
                 await fetch(
-                    "http://localhost:5000/api/admin/products",
+                    "https://stonehub-backend-service.onrender.com/api/admin/products",
                     {
                         method: "POST",
                         body: formData
@@ -789,7 +789,7 @@ async function deleteProduct(id) {
 
         const response =
             await fetch(
-                `http://localhost:5000/api/admin/products/${id}`,
+                `https://stonehub-backend-service.onrender.com/api/admin/products/${id}`,
                 {
                     method: "DELETE"
                 }

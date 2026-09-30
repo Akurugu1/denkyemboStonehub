@@ -92,7 +92,7 @@ async function fetchPayments() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/admin/payments"
+            "https://stonehub-backend-service.onrender.com/api/admin/payments"
         );
 
 
