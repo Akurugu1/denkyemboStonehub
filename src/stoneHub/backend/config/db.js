@@ -1,17 +1,20 @@
 const mysql = require("mysql2");
-//Open my .env files and load the values
+const fs = require("fs");
 require("dotenv").config();
 
-//Now access those vairables using process.env
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    port: process.env.DB_PORT
+    port: process.env.DB_PORT,
+
+    ssl: {
+        ca: fs.readFileSync(__dirname + "/../ca.pem"),
+        rejectUnauthorized: false
+    }
 });
 
-//Now actually connect to the database
 db.connect((err) => {
     if (err) {
         console.log("Database connection failed:", err.message);
@@ -19,5 +22,5 @@ db.connect((err) => {
         console.log("Connected to MySQL database");
     }
 });
-//export module to be used elsewhere
+
 module.exports = db;
