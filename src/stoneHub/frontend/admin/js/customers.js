@@ -233,7 +233,7 @@ function renderCustomers(customerList = customers) {
 
 
             <td>
-                GHâ‚µ ${totalSpent.toFixed(2)}
+                GHC ${totalSpent.toFixed(2)}
             </td>
 
 

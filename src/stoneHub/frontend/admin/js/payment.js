@@ -47,7 +47,7 @@ const closePaymentModal =
 
 function formatMoney(amount) {
 
-    return `GHâ‚µ ${Number(amount).toLocaleString("en-GH")}`;
+    return `GHC ${Number(amount).toLocaleString("en-GH")}`;
 
 }
 

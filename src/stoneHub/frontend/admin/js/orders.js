@@ -238,7 +238,7 @@ function renderOrders(
 
 
             <td>
-                GHâ‚µ ${order.total.toFixed(2)}
+                GHC ${order.total.toFixed(2)}
             </td>
 
 
@@ -543,7 +543,7 @@ async function viewOrder(
 
                                 <span>
                                     ${item.quantity} Ã—
-                                    GHâ‚µ ${Number(
+                                    GHC ${Number(
                                         item.price
                                     ).toFixed(2)}
                                 </span>
@@ -552,7 +552,7 @@ async function viewOrder(
 
 
                             <strong>
-                                GHâ‚µ ${itemTotal.toFixed(2)}
+                                GHC ${itemTotal.toFixed(2)}
                             </strong>
 
                         </div>
@@ -676,7 +676,7 @@ async function viewOrder(
                     </span>
 
                     <strong>
-                        GHâ‚µ ${Number(
+                        GHC ${Number(
                             order.total_amount
                         ).toFixed(2)}
                     </strong>

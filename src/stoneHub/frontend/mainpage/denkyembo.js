@@ -625,7 +625,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const symbols = {
 
-            GHS: "GHâ‚µ",
+            GHS: "GHC",
 
             USD: "$",
 

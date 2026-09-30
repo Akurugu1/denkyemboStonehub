@@ -166,7 +166,7 @@ function renderProducts(productList = products) {
 
 
             <td>
-                GHâ‚µ ${Number(product.price || 0).toFixed(2)}
+                GHC ${Number(product.price || 0).toFixed(2)}
             </td>
 
 

@@ -163,7 +163,7 @@ async function loadDashboardStats() {
             statCards[0]
                 .querySelector("h3")
                 .textContent =
-                `GHâ‚µ ${Number(data.sales)
+                `GHC ${Number(data.sales)
                     .toLocaleString()}`;
 
 
@@ -295,7 +295,7 @@ async function loadRecentOrders() {
                 </td>
 
                 <td>
-                    GHâ‚µ ${Number(
+                    GHC ${Number(
                         order.total_amount
                     ).toLocaleString()}
                 </td>

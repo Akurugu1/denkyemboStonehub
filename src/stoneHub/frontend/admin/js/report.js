@@ -55,7 +55,7 @@ const reportSearch =
 
 function formatMoney(amount) {
 
-    return `GHâ‚µ ${amount.toLocaleString("en-GH")}`;
+    return `GHC ${amount.toLocaleString("en-GH")}`;
 
 }
 
@@ -420,11 +420,11 @@ function displaySalesChart() {
 
             <div class="sales-chart-y">
 
-                <span>GHâ‚µ 8k</span>
-                <span>GHâ‚µ 6k</span>
-                <span>GHâ‚µ 4k</span>
-                <span>GHâ‚µ 2k</span>
-                <span>GHâ‚µ 0</span>
+                <span>GHC 8k</span>
+                <span>GHC 6k</span>
+                <span>GHC 4k</span>
+                <span>GHC 2k</span>
+                <span>GHC 0</span>
 
             </div>
 
@@ -459,7 +459,7 @@ function displaySalesChart() {
                                         month: "short",
                                         day: "numeric"
                                     }
-                                )}: GHâ‚µ ${Number(day.revenue).toLocaleString("en-GH")}"
+                                )}: GHC ${Number(day.revenue).toLocaleString("en-GH")}"
                             ></div>
 
                             <span class="chart-label">
