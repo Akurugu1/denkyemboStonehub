@@ -60,7 +60,7 @@ loginForm.addEventListener("submit", async (event) => {
 
         // Take the admin to the existing dashboard
         window.location.href =
-            "../../Admin/index.html";
+            "../../admin/index.html";
 
 
     } catch (error) {
